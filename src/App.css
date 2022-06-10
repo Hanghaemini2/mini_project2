@@ -200,6 +200,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .Login_Top{
@@ -214,11 +215,24 @@
 
 .GuideBanner{
   border: 1px solid black;
-  height: 300px;
+  height: 200px;
   width: 700px;
-  font-family: 'SEBANG_Gothic_Bold';
+  /* font-family: 'SEBANG_Gothic_Bold'; */
 }
 
+.Login_inputWrap{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.Login_Input{
+  width: 250px;
+  height: 20px;
+  padding: 10px;
+}
 
 
 
