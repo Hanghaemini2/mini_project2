@@ -207,7 +207,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   border: 1px solid black;
   height: 400px;
   width: 890px;
@@ -226,6 +226,10 @@
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+}
+
+.Login_Label{
+  width: 250px;
 }
 
 .Login_Input{

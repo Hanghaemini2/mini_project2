@@ -15,12 +15,18 @@ function Login() {
             <span>로그인</span>
           </div>
           <div className="Login_inputWrap">
-            <input className="Login_Input" placeholder="ID를 입력해 주세요"/>
-            <input className="Login_Input" placeholder="비밀번호를 입력해 주세요"/>
+            <div>
+              <span className="Login_Label">ID</span>
+              <input className="Login_Input" placeholder="ID를 입력해 주세요"/>
+            </div>
+            <div>
+              <span className="Login_Label">PW</span>
+              <input className="Login_Input" placeholder="비밀번호를 입력해 주세요"/>
+            </div>
           </div>
         </div>
         <div className="Login_Bottom">
-
+          <button>로그인</button>
         </div>
 
       </div>
