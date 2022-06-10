@@ -2,6 +2,16 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
+import Main from "./Main";
+import Signup from "./Signup";
+import Login from "./Login";
+import Add from "./Add";
+import Detail from "./Detail";
+import Edit from "./Edit";
+import MyPage from "./MyPage";
+import PleaseLogin from "./PleaseLogin";
+import NotFound from "./NotFound";
+
 function App() {
   return (
     <div className="App">
