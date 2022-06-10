@@ -1,6 +1,7 @@
 .TopWrap{
   /* border: 1px solid black; */
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
 }
@@ -11,7 +12,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  max-width: 900px;
+  width: 1200px;
 }
 
 .HeadHeader{
@@ -64,23 +65,128 @@
   align-items: center;
   width: 900px;
   display: flex;
-  background-color: #feedca;
+  background-color: #f8f4d7;
 }
 
-.RollingWrap{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+.Center_image{
+  width: 700px;
   align-items: center;
+  display: flex;
+  justify-content: center;
   /* border: 1px solid black; */
-  width: 800px
+}
+
+.LeftArrow{
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;  
+  width: 50px;
+}
+
+.RightArrow{
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  width: 50px;
 }
 
 .HeadFooter{
   /* border: 1px solid black; */
   height: 10px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------------------------------------- */
+
+.Card_field {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
   width: 900px;
-  display: flex;;
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  gap: 15px;
+  /* border: 1px solid black; */
+}
+
+.Card_allWrap{
+  border: 2px dashed #d5bfb4;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 290px;
+  margin: 15px;
+  box-shadow: 3px 3px 7px #888B8D;
+}
+
+.card_half_Wrap_Top{
+  /* border: 1px solid black; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  height: 270px;
+  width: 350px;
+}
+
+.Image_wrap{
+  /* border: 1px solid black; */
+  height: 230px;
+  margin-right: 5px;
+  width: 170px;
+}
+
+.Text_Title_wrap{
+  /* border: 1px solid black; */
+  height: 30px;
+  width: 150px;
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #523f31;
+}
+
+.TextField{
+  /* border: 1px solid black; */
+  height: 185px;
+  width: 150px;
+  font-size: 13px;
+  color: #523f31;
+}
+
+.card_half_Wrap_Bottom{
+  /* border: 1px solid black; */
+  height: 10px;
+  width: 310px;
+  padding: 10px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  background-color: #9e7e53;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.Info_text{
+  
 }
 
 
