@@ -1,6 +1,10 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import styled from "styled-components";
+import Banner01 from './image/Banner_01.jpeg';
+import LeftArrow from './image/arrow-left-fill.svg';
+import RightArrow from './image/arrow-right-fill.svg';
+
+import './App.css';
 
 import Main from "./Main";
 import Signup from "./Signup";
@@ -15,8 +19,27 @@ import NotFound from "./NotFound";
 function App() {
   return (
     <div className="App">
-      <div>
-        <h1>This is App.js</h1>
+      <div className="TopWrap"> 
+        <div className="Wrap">
+          <div className="HeadHeader">
+            <div className="HomeWrap">
+
+            </div>
+            <div className="Button_headWrap">
+              <button className="HeadButton">회원가입</button> |
+              <button className="HeadButton">로그인</button>
+            </div>
+
+          </div>
+          <div className="HeadBody">
+              <div className="LeftArrow"> <img src={LeftArrow} /> </div>
+              <img src={Banner01} />
+              <div className="RightArrow"> <img src={RightArrow} />  </div>
+          </div>
+          <div className="HeadFooter">
+
+          </div>
+        </div>
       </div>
       <Routes>
         <Route path="/" element={<Main />} />
