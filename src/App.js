@@ -1,6 +1,8 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Banner01 from './image/Banner_01.jpeg';
+import Banner02 from './image/banner_02.jpeg';
+import Banner03 from './image/banner_03.jpeg';
 import LeftArrow from './image/arrow-left-fill.svg';
 import RightArrow from './image/arrow-right-fill.svg';
 // import { ReactComponent as BookIcon } from './image/bookIcon.svg';
@@ -19,6 +21,8 @@ import NotFound from "./NotFound";
 
 
 function App() {
+  const navigate = useNavigate();
+
   return (
     <div className="App">
       <div className="TopWrap"> 
@@ -28,13 +32,15 @@ function App() {
 
             </div>
             <div className="Button_headWrap">
-              <button className="HeadButton">회원가입</button> |
-              <button className="HeadButton">로그인</button>
+              <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>회원가입</button> |
+              <button className="HeadButton" onClick={() => {navigate(`/login`)}}>로그인</button>
             </div>
           </div>
           <div className="HeadBody">
               <div className="LeftArrow"> <img src={LeftArrow} /> </div>
               <div className="Center_image"><img src={Banner01} /></div>
+              <div className="Center_image"><img src={Banner02} /></div>
+              <div className="Center_image"><img src={Banner03} /></div>
               <div className="RightArrow"> <img src={RightArrow} />  </div>
           </div>
           <div className="HeadFooter">

@@ -190,6 +190,38 @@
 }
 
 
+/* ------------------------------------------------- */
+
+
+.Login_Wrap{
+  border: 1px solid black;
+  width: 900px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Login_Top{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 400px;
+  width: 890px;
+}
+
+.GuideBanner{
+  border: 1px solid black;
+  height: 300px;
+  width: 700px;
+  font-family: 'SEBANG_Gothic_Bold';
+}
+
+
+
+
 
 @keyframes App-logo-spin {
   from {
@@ -198,4 +230,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+@font-face {
+  font-family: 'SEBANG_Gothic_Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
