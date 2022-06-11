@@ -26,9 +26,6 @@ function App() {
   const navigate = useNavigate();
   const [bannerState, setBannerState] = useState(1);
 
-    
-
-
   return (
     <div className="App">
       <div className="TopWrap">
@@ -40,29 +37,69 @@ function App() {
               </span>
             </div>
             <div className="Button_headWrap">
-              <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>회원가입</button> |
-              <button className="HeadButton" onClick={() => {navigate(`/login`)}}>로그인</button>
-
-              <button className="HeadButton" onClick={() => {navigate(`/add`)}}>게시물 작성</button>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/signup`);
+                }}
+              >
+                회원가입
+              </button>
+              |
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/login`);
+                }}
+              >
+                로그인
+              </button>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/add`);
+                }}
+              >
+                게시물 작성
+              </button>
             </div>
           </div>
           <div className="HeadBody">
             <div className="LeftArrow">
-             <img src={LeftArrow} onClick={() => {setBannerState(bannerState === 3 ? 1 : bannerState + 1);}}/>
+              <img
+                src={LeftArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);
+                }}
+              />
             </div>
             <div className="BannerWrap">
               <div className="Center_image">
-                <img src={Banner01} style={{ display: bannerState === 1 ? "" : "none" }}/>
-              </div>
-              <div className="Center_image"> 
-                <img src={Banner02} style={{ display: bannerState === 2 ? "" : "none" }}/>
+                <img
+                  src={Banner01}
+                  style={{ display: bannerState === 1 ? "" : "none" }}
+                />
               </div>
               <div className="Center_image">
-                <img src={Banner03} style={{ display: bannerState === 3 ? "" : "none" }}/>
+                <img
+                  src={Banner02}
+                  style={{ display: bannerState === 2 ? "" : "none" }}
+                />
+              </div>
+              <div className="Center_image">
+                <img
+                  src={Banner03}
+                  style={{ display: bannerState === 3 ? "" : "none" }}
+                />
               </div>
             </div>
             <div className="RightArrow">
-              <img src={RightArrow} onClick={() => { setBannerState(bannerState === 1 ? 3 : bannerState - 1);}}/>
+              <img
+                src={RightArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);
+                }}
+              />
             </div>
           </div>
           <div className="HeadFooter"></div>
