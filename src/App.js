@@ -35,14 +35,8 @@ function App() {
         <div className="Wrap">
           <div className="HeadHeader">
             <div className="HomeWrap">
-              <span
-                className="LOGONAME"
-                onClick={() => {
-                  navigate(`/`);
-                }}
-              >
-                {" "}
-                책크잇!!{" "}
+              <span className="LOGONAME" onClick={() => {navigate(`/`);}}>
+                책크잇!!
               </span>
             </div>
             <div className="Button_headWrap">
@@ -54,40 +48,21 @@ function App() {
           </div>
           <div className="HeadBody">
             <div className="LeftArrow">
-              {" "}
-              <img
-                src={LeftArrow}
-                onClick={() => {
-                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);
-                }}
-              />{" "}
+             <img src={LeftArrow} onClick={() => {setBannerState(bannerState === 3 ? 1 : bannerState + 1);}}/>
             </div>
-            <div className="Center_image">
-              <img
-                src={Banner01}
-                style={{ display: bannerState === 1 ? "" : "none" }}
-              />
-            </div>
-            <div className="Center_image">
-              <img
-                src={Banner02}
-                style={{ display: bannerState === 2 ? "" : "none" }}
-              />
-            </div>
-            <div className="Center_image">
-              <img
-                src={Banner03}
-                style={{ display: bannerState === 3 ? "" : "none" }}
-              />
+            <div className="BannerWrap">
+              <div className="Center_image">
+                <img src={Banner01} style={{ display: bannerState === 1 ? "" : "none" }}/>
+              </div>
+              <div className="Center_image"> 
+                <img src={Banner02} style={{ display: bannerState === 2 ? "" : "none" }}/>
+              </div>
+              <div className="Center_image">
+                <img src={Banner03} style={{ display: bannerState === 3 ? "" : "none" }}/>
+              </div>
             </div>
             <div className="RightArrow">
-              {" "}
-              <img
-                src={RightArrow}
-                onClick={() => {
-                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);
-                }}
-              />{" "}
+              <img src={RightArrow} onClick={() => { setBannerState(bannerState === 1 ? 3 : bannerState - 1);}}/>
             </div>
           </div>
           <div className="HeadFooter"></div>
