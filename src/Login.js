@@ -41,6 +41,7 @@ function Login() {
       });
       console.log(response);
       navigate("/");
+      alert("로그인되었습니다!");
     } catch (err) {
       console.log("Error >>", err);
       document.getElementById("LoginBtn").disabled = false;

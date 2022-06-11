@@ -48,6 +48,7 @@ function Signup() {
       });
       console.log(response);
       navigate("/");
+      alert("회원가입되었습니다!");
     } catch (err) {
       console.log("Error >>", err);
       document.getElementById("SigninBtn").disabled = false;
