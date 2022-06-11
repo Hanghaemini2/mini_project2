@@ -5,6 +5,8 @@ import Banner02 from './image/banner_02.jpeg';
 import Banner03 from './image/banner_03.jpeg';
 import LeftArrow from './image/arrow-left-fill.svg';
 import RightArrow from './image/arrow-right-fill.svg';
+import Logo from './image/house_heart_fill.svg';
+
 // import { ReactComponent as BookIcon } from './image/bookIcon.svg';
 
 import './App.css';
@@ -29,7 +31,7 @@ function App() {
         <div className="Wrap">
           <div className="HeadHeader">
             <div className="HomeWrap">
-
+              <span className="LOGONAME" onClick={() => {navigate(`/`)}}> 책크잇!! </span>
             </div>
             <div className="Button_headWrap">
               <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>회원가입</button> |
@@ -39,8 +41,8 @@ function App() {
           <div className="HeadBody">
               <div className="LeftArrow"> <img src={LeftArrow} /> </div>
               <div className="Center_image"><img src={Banner01} /></div>
-              <div className="Center_image"><img src={Banner02} /></div>
-              <div className="Center_image"><img src={Banner03} /></div>
+              {/* <div className="Center_image"><img src={Banner02} /></div>
+              <div className="Center_image"><img src={Banner03} /></div> */}
               <div className="RightArrow"> <img src={RightArrow} />  </div>
           </div>
           <div className="HeadFooter">

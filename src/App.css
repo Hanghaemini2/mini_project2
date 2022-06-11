@@ -31,9 +31,18 @@
 
 .HomeWrap{
   /* border: 1px solid black; */
-  width:50px;
   height: 50px;
-  margin-left: 15px;
+  margin-left: 20px;
+  display: flex;
+}
+
+.LOGONAME{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: 'KOHIBaeumOTF';
+  font-size: 35px;
 }
 
 .Button_headWrap{
@@ -51,7 +60,7 @@
   background-color: transparent;
   border: none;
   color: #623412;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   margin: 10px;
 }
@@ -194,30 +203,48 @@
 
 
 .Login_Wrap{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 900px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 
 .Login_Top{
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: flex-start;
-  border: 1px solid black;
+  align-items: center;
+  /* border: 1px solid black; */
   height: 400px;
   width: 890px;
+  margin-bottom: 20px;
 }
 
 .GuideBanner{
-  border: 1px solid black;
-  height: 200px;
+  /* border: 1px solid black; */
+  height: 150px;
   width: 700px;
+  margin-bottom: 40px;
+  text-align: center;
   /* font-family: 'SEBANG_Gothic_Bold'; */
+}
+
+.Log_text_1{
+  font-size: 30px;
+  margin-left: 10px;
+  font-weight: bolder;
+  color:#523f31;
+  font-family: 'KOHIBaeumOTF';
+}
+
+.Log_text_2{
+  font-size: 20px;
+  margin-left: 10px;
+  font-weight: bolder;
+  color:#523f31;
 }
 
 .Login_inputWrap{
@@ -225,18 +252,167 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  /* border: 1px solid black; */
+}
+
+.ID_Wrap{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.PW_Wrap{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .Login_Label{
-  width: 250px;
+  width: 150px;
+  margin-right: 15px;
+  font-size: 20px;
+  height: 30px;
+  /* border: 1px solid black; */
+  background-color: #523f31;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .Login_Input{
-  width: 250px;
+  width: 350px;
   height: 20px;
   padding: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
+
+.LoginButton{
+  width: 250px;
+  border: none;
+  outline: none;
+  background-color: #523f31;
+  color: white;
+  font-size: 30px;
+  padding:10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+
+/* ------------------------------------------------- */
+
+
+.Join_Wrap{
+  width: 900px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  /* border: 1px solid black; */
+}
+
+.Join_Top{
+  width: 900px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  /* border: 1px solid black; */
+}
+
+.GuideBanner_join{
+  height: 150px;
+  width: 700px;
+  margin-bottom: 40px;
+}
+
+.Join_text_1{
+  font-size: 30px;
+  margin-left: 10px;
+  font-weight: bolder;
+  color:#523f31;
+  font-family: 'KOHIBaeumOTF';
+  text-align: center;
+}
+
+.Join_text_2{
+  font-size: 20px;
+  margin-left: 10px;
+  font-weight: bolder;
+  color:#523f31;
+  text-align: center;
+}
+
+.Join_inputWrap{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+.ID_JoinWrap{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.PW_JoinWrap{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Join_Label{
+  width: 150px;
+  height: 30px;
+  margin-right: 15px;
+  font-size: 20px;
+  /* border: 1px solid black; */
+  background-color: #523f31;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Join_Input{
+  width: 350px;
+  height: 20px;
+  padding: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.JoinButton{
+  width: 250px;
+  border: none;
+  outline: none;
+  background-color: #523f31;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  padding:10px;
+  border-radius: 10px;
+}
+
+
 
 
 
@@ -254,6 +430,13 @@
 @font-face {
   font-family: 'SEBANG_Gothic_Bold';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'KOHIBaeumOTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/KOHIBaeumOTF.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
