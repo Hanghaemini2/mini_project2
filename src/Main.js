@@ -1,10 +1,10 @@
-import React from "react"
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import Cover01 from './image/book_sample.jpeg';
+import Cover01 from "./image/book_sample.jpeg";
 
 function Main() {
-    const card_lists = Array.from({length: 9}, (v, i) => i);
+  const card_lists = Array.from({ length: 9 }, (v, i) => i);
 
     return (
         <div className="Card_field">
@@ -32,10 +32,14 @@ function Main() {
                         르탄이 / 2022 - 06 - 10
                     </div>
                 </div>
-                )
-            })}
-        </div>
-    )
+              </div>
+            </div>
+            <div className="card_half_Wrap_Bottom">르탄이 / 2022 - 06 - 10</div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
-export default Main
+export default Main;

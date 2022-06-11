@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import Banner01 from './image/Banner_01.jpeg';
-import Banner02 from './image/banner_02.jpeg';
-import Banner03 from './image/banner_03.jpeg';
-import LeftArrow from './image/arrow-left-fill.svg';
-import RightArrow from './image/arrow-right-fill.svg';
+
+import Banner01 from "./image/Banner_01.jpeg";
+import Banner02 from "./image/banner_02.jpeg";
+import Banner03 from "./image/banner_03.jpeg";
+import LeftArrow from "./image/arrow-left-fill.svg";
+import RightArrow from "./image/arrow-right-fill.svg";
+import Logo from "./image/house_heart_fill.svg";
 
 // import { ReactComponent as BookIcon } from './image/bookIcon.svg';
 
-import './App.css';
+import "./App.css";
 
 import Main from "./Main";
 import Signup from "./Signup";
@@ -20,20 +22,28 @@ import MyPage from "./MyPage";
 import PleaseLogin from "./PleaseLogin";
 import NotFound from "./NotFound";
 
-
 function App() {
   const navigate = useNavigate();
+  const [bannerState, setBannerState] = useState(1);
 
     
 
 
   return (
     <div className="App">
-      <div className="TopWrap"> 
+      <div className="TopWrap">
         <div className="Wrap">
           <div className="HeadHeader">
             <div className="HomeWrap">
-              <span className="LOGONAME" onClick={() => {navigate(`/`)}}> 책크잇!! </span>
+              <span
+                className="LOGONAME"
+                onClick={() => {
+                  navigate(`/`);
+                }}
+              >
+                {" "}
+                책크잇!!{" "}
+              </span>
             </div>
             <div className="Button_headWrap">
               <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>회원가입</button> |
@@ -43,14 +53,44 @@ function App() {
             </div>
           </div>
           <div className="HeadBody">
-              <div className="LeftArrow"> <img src={LeftArrow} /> </div>
-              <div className="Center_image"><img src={Banner01} /></div>
-              {/* <div className="Center_image"><img src={Banner02} /></div>
-              <div className="Center_image"><img src={Banner03} /></div> */}
-              <div className="RightArrow"> <img src={RightArrow} />  </div>
+            <div className="LeftArrow">
+              {" "}
+              <img
+                src={LeftArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);
+                }}
+              />{" "}
+            </div>
+            <div className="Center_image">
+              <img
+                src={Banner01}
+                style={{ display: bannerState === 1 ? "" : "none" }}
+              />
+            </div>
+            <div className="Center_image">
+              <img
+                src={Banner02}
+                style={{ display: bannerState === 2 ? "" : "none" }}
+              />
+            </div>
+            <div className="Center_image">
+              <img
+                src={Banner03}
+                style={{ display: bannerState === 3 ? "" : "none" }}
+              />
+            </div>
+            <div className="RightArrow">
+              {" "}
+              <img
+                src={RightArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);
+                }}
+              />{" "}
+            </div>
           </div>
-          <div className="HeadFooter">
-          </div>
+          <div className="HeadFooter"></div>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/signup" element={<Signup />} />
