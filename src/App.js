@@ -25,6 +25,9 @@ function App() {
   const navigate = useNavigate();
   const [bannerState, setBannerState] = useState(1);
 
+    
+
+
   return (
     <div className="App">
       <div className="TopWrap">
@@ -42,23 +45,10 @@ function App() {
               </span>
             </div>
             <div className="Button_headWrap">
-              <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/signup`);
-                }}
-              >
-                회원가입
-              </button>{" "}
-              |
-              <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/login`);
-                }}
-              >
-                로그인
-              </button>
+              <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>회원가입</button> |
+              <button className="HeadButton" onClick={() => {navigate(`/login`)}}>로그인</button>
+
+              <button className="HeadButton" onClick={() => {navigate(`/add`)}}>게시물 작성</button>
             </div>
           </div>
           <div className="HeadBody">
