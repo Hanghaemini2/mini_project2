@@ -36,7 +36,7 @@ function App() {
           <div className="HeadHeader">
             <div className="HomeWrap">
               <span className="LOGONAME" onClick={() => {navigate(`/`);}}>
-                책크잇!!
+                <i>책크잇!!</i>
               </span>
             </div>
             <div className="Button_headWrap">
