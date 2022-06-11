@@ -2,33 +2,35 @@ import produce from "immer";
 import { deleteCookie, setCookie } from "../../shared/Cookie";
 import { apis } from "../../shared/api";
 
-// Actions
-const LOAD = "book/LOAD";
-const CREATE = "book/CREATE";
+// action
+const LOGIN = "user/LOGIN";
+const LOGOUT = "user/LOGOUT";
 
-// Initial State
+// initialState
 const initialState = {
-  list: [],
+  username: null,
+  nickname: null,
+  is_login: false,
 };
 
-// Action Creators
-export function loadBook(book_list) {
-  return { type: LOAD, book_list };
+// action creator
+export function loginUser(userInfo) {
+  return { type: LOGIN, userInfo };
 }
 
-export function createBook(book) {
-  return { type: CREATE, book };
+export function logOutUser(userInfo) {
+  return { type: LOGOUT, userInfo };
 }
 
 //middlewares
 
-// Reducer
+// reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case "book/LOAD": {
+    case "user/LOGIN": {
       return { list: action.book_list };
     }
-    case "book/CREATE": {
+    case "user/LOGOUT": {
       const new_book_list = [...state.list, action.post];
       return { list: new_book_list };
     }
