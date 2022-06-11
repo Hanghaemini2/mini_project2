@@ -5,7 +5,6 @@ import Banner02 from './image/banner_02.jpeg';
 import Banner03 from './image/banner_03.jpeg';
 import LeftArrow from './image/arrow-left-fill.svg';
 import RightArrow from './image/arrow-right-fill.svg';
-import Logo from './image/house_heart_fill.svg';
 
 // import { ReactComponent as BookIcon } from './image/bookIcon.svg';
 

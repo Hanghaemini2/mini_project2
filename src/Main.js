@@ -13,7 +13,7 @@ function Main() {
                 <div className="Card_allWrap">
                     <div className="card_half_Wrap_Top">
                       <div className="Image_wrap">
-                        <img style={{width: '90%'}} src={Cover01} />
+                        <img style={{width: '160px'}} src={Cover01} />
                       </div>
                       <div className="Text_Wrap">
                         <div className="Text_Title_wrap">
