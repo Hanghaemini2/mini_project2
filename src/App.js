@@ -43,9 +43,6 @@ function App() {
               <button className="HeadButton" onClick={() => {navigate(`/login`)}}>로그인</button>
 
               <button className="HeadButton" onClick={() => {navigate(`/add`)}}>게시물 작성</button>
-              <button className="HeadButton" onClick={() => {navigate(`/detail/:postId`)}}>상세 페이지</button>
-
-              <button className="HeadButton" onClick={() => {navigate(`/modaltest`)}}>모달 테스트</button>
             </div>
           </div>
           <div className="Divide_wrap">

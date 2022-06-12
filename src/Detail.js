@@ -7,18 +7,22 @@ import Close from "./image/closeButton.svg";
 
 
 
-function Detail() {
+function Detail(props) {
  
+  const CloseModal = () => { 
+    props.close(false)
+  }
+
+    
 
   return(
-    <div>
-      <div className="Info_allwrap">
+      <div className="Info_allwrap" tabIndex={0}>
         <div className="Info_topWrap">
           <div className="ImageInfo_wrap">
             <div className="ImageInfo_wrap_Guide"> <img style={{ width: '240px' }} src={Cover01}/> </div>
           </div>
           <div className="Info_TitleWrap">
-            <img src={Close} className="Xclose"/> 
+            <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
             <div className="Info_User_Wrap">
               <div className="Info_user_1"> 르탄이</div>
               <div className="Info_user_2"> 2022-06-10 </div>
@@ -36,10 +40,18 @@ function Detail() {
             </div>
           </div>
         </div>
-        <div className="Sub-mit_Button_wrap">
-        </div>
+        {/* <div className="Info_bottomWrap">
+            <ul>댓글 
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+              <li>르탄이 | 벌써 100권이나 나왔네요</li>
+            </ul>
+        </div> */}
       </div>
-    </div>
   );
 }
 

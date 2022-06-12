@@ -726,23 +726,38 @@
 
 .Info_allwrap{
   width: 900px;
-  height: 1000px;
+  height: 2500px;
   display: flex;
   flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  background-color:rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  top: 0;
+  animation: opacity 0.3s ease;
   /* border: 1px solid black; */
+}
+
+.Info_page_TopBottomWrap{
+  background-color:ghostwhite;
+  box-shadow: 8px 12px 15px black;
+  height: 500px;
+  margin-top: 600px;
 }
 
 .Info_topWrap{
   width: 850px;
-  height: 410px;
+  height: 420px;
   /* border: 1px solid black; */
-  border-radius: 30px;
+  border-radius: 10px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 600px;
   background-color: whitesmoke;
+
 }
 
 .ImageInfo_wrap{
@@ -774,7 +789,7 @@
   /* border: 1px solid black; */
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-end;
 }
 
@@ -786,7 +801,7 @@
 }
 
 .Info_User_Wrap{
-  width: 500px;
+  width: 480px;
   display: flex;
   background-color: #653819;
   /* height: 100px; */
@@ -836,7 +851,7 @@
 }
 
 .Info_Title{
-  width: 450px;
+  width: 460px;
   height: 25px;
   padding: 8px;
   font-size: 18px;
@@ -860,61 +875,18 @@
   color: #523f31
 }
 
-
-
-/* -----------------------모달 테스트 영역 (삭제 예정)------------------ */
-
-.OpenModal{
-  background-color: black;
-  width: 150px;
-  height: 80px;
-  border: none;
-  border-radius: 30px;
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.ModalBackground {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(102, 100, 100, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ModalBox {
-  position: relative;
-  width: 400px;
-  height: 150px;
-  z-index: 10;
-  color: black;
-  background-color: white;
-  font-size: 30px;
-  font-weight: 600;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.ModalBtn{
-  margin-bottom: 30px;
-  border: none;
-  background-color: white;
-  font-size: 20px;
-  cursor: pointer;
+.Info_bottomWrap{
+  width: 850px;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  
+  margin-top: 20px;
+  background-color: whitesmoke;
+  box-shadow: 8px 12px 15px black;
 }
 
 
-
-
-
-
+/* --------------------- 애니메이션 CSS ----------------------- */
 
 
 
@@ -924,7 +896,6 @@
   animation: slide 2s ease-in;
   animation-fill-mode: forwards;
   }
-
 
 @keyframes slide {
   0% {
@@ -956,17 +927,15 @@
   }
 }
 
-
-
-
-/* @-webkit-keyframes ImgAnimation { 
+@keyframes opacity {
   from {
-      opacity: 1;
+    opacity: 0;
   }
   to {
-      opacity: 0;
+    opacity: 1;
   }
-} */
+}
+
 
 @keyframes App-logo-spin {
   from {
