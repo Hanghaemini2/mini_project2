@@ -1,12 +1,12 @@
 import React from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import Logo from './image/Logo.svg';
 
 import './App.css';
 
 
 function Login() {
 
+  const navigate = useNavigate();
   
   return (
     <div>
@@ -27,6 +27,7 @@ function Login() {
               <input className="Login_Input" placeholder="비밀번호를 입력해 주세요"/>
             </div>
           </div>
+          <span>아직 책크잇의 회원이 아니시라면 책크잇의 회원이 되어 보세요. <b onClick={() => {navigate(`/signup`)}}>회원가입 바로 가기</b></span>
         </div>
         <div className="Login_Bottom">
           <button className="LoginButton">로그인</button>

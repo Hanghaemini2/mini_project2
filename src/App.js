@@ -6,7 +6,7 @@ import Banner02 from "./image/banner_02.jpeg";
 import Banner03 from "./image/banner_03.jpeg";
 import LeftArrow from "./image/arrow-left-fill.svg";
 import RightArrow from "./image/arrow-right-fill.svg";
-import Logo from "./image/house_heart_fill.svg";
+
 
 // import { ReactComponent as BookIcon } from './image/bookIcon.svg';
 
@@ -21,13 +21,12 @@ import Edit from "./Edit";
 import MyPage from "./MyPage";
 import PleaseLogin from "./PleaseLogin";
 import NotFound from "./NotFound";
+import ModalTest from "./ModalTest";
 
 function App() {
   const navigate = useNavigate();
   const [bannerState, setBannerState] = useState(1);
-
-    
-
+  
 
   return (
     <div className="App">
@@ -44,21 +43,31 @@ function App() {
               <button className="HeadButton" onClick={() => {navigate(`/login`)}}>로그인</button>
 
               <button className="HeadButton" onClick={() => {navigate(`/add`)}}>게시물 작성</button>
+              <button className="HeadButton" onClick={() => {navigate(`/detail/:postId`)}}>상세 페이지</button>
+
+              <button className="HeadButton" onClick={() => {navigate(`/modaltest`)}}>모달 테스트</button>
             </div>
           </div>
+          <div className="Divide_wrap">
+            <div className="Wing_left"></div>
+            <div className="DivideBar">
+            </div>
+            <div className="Wing_right"></div>
+          </div>
+          
           <div className="HeadBody">
             <div className="LeftArrow">
              <img src={LeftArrow} onClick={() => {setBannerState(bannerState === 3 ? 1 : bannerState + 1);}}/>
             </div>
             <div className="BannerWrap">
               <div className="Center_image">
-                <img src={Banner01} style={{ display: bannerState === 1 ? "" : "none" }}/>
+                <img src={Banner01} className='ImgAnimation' style={{ display: bannerState === 1 ? "" : "none" }}/>
               </div>
               <div className="Center_image"> 
-                <img src={Banner02} style={{ display: bannerState === 2 ? "" : "none" }}/>
+                <img src={Banner02} className='ImgAnimation' style={{ display: bannerState === 2 ? "" : "none" }}/>
               </div>
               <div className="Center_image">
-                <img src={Banner03} style={{ display: bannerState === 3 ? "" : "none" }}/>
+                <img src={Banner03} className='ImgAnimation' style={{ display: bannerState === 3 ? "" : "none" }}/>
               </div>
             </div>
             <div className="RightArrow">
@@ -76,6 +85,8 @@ function App() {
             <Route path="/mypage/:userId" element={<MyPage />} />
             <Route path="/pleaselogin" element={<PleaseLogin />} />
             <Route path="*" element={<NotFound />} />
+          
+            <Route path="/modaltest" element={<ModalTest />} /> {/*기능 구현 완료시 삭제 예정*/}
           </Routes>
         </div>
       </div>

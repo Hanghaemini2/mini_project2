@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Add() {
 
   const [rate, setRate] = React.useState(0);
+  
+  useEffect( ()=>{console.log(rate)} )
+  
 
-
-  return (
+ return (
     <div>
       <div className="Add_allwrap">
         <div className="Add_topWrap">
@@ -25,7 +27,7 @@ function Add() {
             <div className="Add_StarPoint">
               <span className="Add_URL_Sub1"> 도서 평점 </span>
               {Array.from({ length: 5 }, (item, i) => {
-                 return (<div key={i} onClick={() => { setRate(i + 1);}} className="StarPoint"
+                 return (<div key={i} onClick={() => {setRate(i + 1);}} className="StarPoint"
                   style={{color: rate < i + 1 ? "#D0C4C5" : "#823B34" }}>★</div> ); })}
             </div>
             <div className="Add_TitleText">
@@ -38,11 +40,11 @@ function Add() {
           </div>
         </div>
         <div className="Sub-mit_Button_wrap">
-          <button className="Add_PostButton"><i>책크잇!!</i></button>
+          <button className="Add_PostButton hover1"><i>책크잇!!</i></button>
         </div>
       </div>
     </div>
   );
-}
+} 
 
 export default Add;
