@@ -1,7 +1,8 @@
 import React from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
+import './App.css';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Logo from "./image/Logo.svg";
 
 import "./App.css";
 
@@ -78,6 +79,8 @@ function Login() {
               />
             </div>
           </div>
+          <span>아직 책크잇의 회원이 아니시라면 책크잇의 회원이 되어 보세요. <b className="LogintoJoin" 
+          onClick={() => {navigate(`/signup`)}}>회원가입 바로 가기</b></span>
         </div>
         <div className="Login_Bottom">
           <button className="LoginButton" id="LoginBtn" onClick={loginAxios}>
