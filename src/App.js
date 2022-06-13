@@ -26,7 +26,6 @@ import ModalTest from "./ModalTest";
 function App() {
   const navigate = useNavigate();
   const [bannerState, setBannerState] = useState(1);
-  
 
   return (
     <div className="App">
@@ -39,10 +38,31 @@ function App() {
               </span>
             </div>
             <div className="Button_headWrap">
-              <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>회원가입</button> |
-              <button className="HeadButton" onClick={() => {navigate(`/login`)}}>로그인</button>
-
-              <button className="HeadButton" onClick={() => {navigate(`/add`)}}>게시물 작성</button>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/signup`);
+                }}
+              >
+                회원가입
+              </button>
+              |
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/login`);
+                }}
+              >
+                로그인
+              </button>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/add`);
+                }}
+              >
+                게시물 작성
+              </button>
             </div>
           </div>
           <div className="Divide_wrap">
@@ -54,7 +74,12 @@ function App() {
           
           <div className="HeadBody">
             <div className="LeftArrow">
-             <img src={LeftArrow} onClick={() => {setBannerState(bannerState === 3 ? 1 : bannerState + 1);}}/>
+              <img
+                src={LeftArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);
+                }}
+              />
             </div>
             <div className="BannerWrap">
               <div className="Center_image">
@@ -68,7 +93,12 @@ function App() {
               </div>
             </div>
             <div className="RightArrow">
-              <img src={RightArrow} onClick={() => { setBannerState(bannerState === 1 ? 3 : bannerState - 1);}}/>
+              <img
+                src={RightArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);
+                }}
+              />
             </div>
           </div>
           <div className="HeadFooter"></div>

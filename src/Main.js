@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./App.css";
+import { useDispatch } from "react-redux";
+import { loadBook } from "./redux/modules/book";
 
 import Thumb from "./image/hand-thumbs-up.svg";
 import next from "./image/next_button.svg";
@@ -8,6 +11,8 @@ import Cover01 from "./image/book_sample.jpeg";
 import Detail from "./Detail";
 
 function Main() {
+  
+  const dispatch = useDispatch();
   const card_lists = Array.from({ length: 4 }, (v, i) => i);
   const [modal, setModal] = useState(false);
 
@@ -18,6 +23,10 @@ function Main() {
   const Today_data = [[year] + '년 \ ' + [month + 1] + '월 \ ' + [date] + '일']
 
   const [rate, setRate] = React.useState(0);
+  
+    React.useEffect(() => {
+//     loadBookAxios();
+  }, []);
 
 
     return (
