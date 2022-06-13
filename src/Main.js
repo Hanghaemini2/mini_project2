@@ -6,7 +6,7 @@ import Cover01 from "./image/book_sample.jpeg";
 import Detail from "./Detail";
 
 function Main() {
-  const card_lists = Array.from({ length: 7 }, (v, i) => i);
+  const card_lists = Array.from({ length: 4 }, (v, i) => i);
   const [modal, setModal] = useState(false);
 
   const now = new Date()

@@ -489,44 +489,50 @@
 /* -------------------추가 페이지-------------------- */
 
 
-.PageTitle{
-  font-weight: bold;
-  font-size: 30px;
-  color: #523f31;
-  font-family: 'SEBANG_Gothic_Bold';
-  /* margin-left: 15px; */
-}
-
 .Add_allwrap{
   width: 900px;
-  height: 1000px;
+  height: 800px;
   display: flex;
   flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
   /* border: 1px solid black; */
   margin-bottom: 90px;
 }
 
-.Add_topWrap{
-  width: 900px;
-  /* height: 450px; */
-  /* border: 1px solid black; */
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+.PageTitle{
+  font-size: 30px;
+  color: #523f31;
+  font-family: 'KOHIBaeumOTF';
+  margin-top:40px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  /* margin-left: 15px; */
 }
 
-.ImageAdd_wrap{
-  width: 300px;
-  /* height: 400px; */
+.Page_guide{
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  color: #523f31;
+}
+
+.Add_topWrap{
+  width: 890px;
+  /* height: 450px; */
   /* border: 1px solid black; */
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-right: 25px;
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+.ImageAdd_wrap{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .ImageAdd_wrap_Guide{
@@ -541,39 +547,26 @@
 
 .Add_TitleWrap{
   width: 500px;
-  /* height: 300px; */
   /* border: 1px solid black; */
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  margin-left: 20px;
 }
 
 .Add_BuylinkText{
-  width: 500px;
+  width: 850px;
   display: flex;
-  /* height: 100px; */
-  /* border: 1px solid black; */
-}
-
-.Add_URL_Sub1{
-  width: 120px;
-  height: 20px;
-  text-align: center;
-  font-size: 15px;
-  padding: 10px;
-  font-weight: bold;
-  background-color: #AA8066;
-  color: white;
-  /* border-bottom-right-radius: 20px; */
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
   /* border: 1px solid black; */
 }
 
 .Add_inputIURL{
-  width: 300px;
-  height: 25px;
-  padding: 8px;
+  width: 530px;
+  padding: 7px;
   font-size: 13px;
   font-weight: bold;
   border-top: none;
@@ -585,22 +578,24 @@
 }
 
 .Add_StarPoint{
-  width: 500px;
-  /* height: 50px; */
+  width: 600px;
   /* border: 1px solid black; */
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .Add_PicButton{
-  width: 270px;
+  width: 130px;
   outline: none;
   border: none;
   padding: 10px;
   background-color: #523f31;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   margin-top: 30px;
   text-align: center;
@@ -608,31 +603,15 @@
   border-radius: 10px;
 }
 
-.Add_bottomWrap{
-  width: 900px;
-  height: 500px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  align-items: flex-end;
-  /* border: 1px solid black; */
-  margin-top: 20px;
-}
-
 .Add_TitleText{
-  /* width: 800px; */
-  height: 50px;
+  width: 250px;
+  height: 40px;
   display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-top: 30px;
-  /* border: 1px solid black; */
+  align-items: center;
+  background-color: #653819
 }
 
 .Add_Input_Area{
-  /* width: 800px; */
-  /* height: 250px; */
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
@@ -643,53 +622,58 @@
 }
 
 .Add_Title_sub1{
-  width: 200px;
-  text-align: center;
-  font-size: 18px;
-  padding: 10px;
+  font-size: 20px;
+  padding-left: 20px;
   font-weight: bold;
-  background-color: #AA8066;
   color: white;
-  /* border-bottom-right-radius: 20px; */
-  /* border: 1px solid black; */
+  font-family: 'Cafe24Ohsquareair';
 }
 
 .Add_Title_Input{
-  width: 450px;
+  width: 700px;
   height: 25px;
   padding: 8px;
   font-size: 18px;
   font-weight: bold;
-  border: 2px solid #523f31;
+  /* border: 2px solid #523f31; */
   outline: none;
-  margin-left: 10px;
   margin-top: 10px;
 }
 
 .Add_Text_Input{
-  width: 450px;
+  width: 700px;
   height: 200px;
   padding: 8px;
   font-size: 14px;
   font-weight: bold;
-  border: 2px solid #523f31;
   border-radius: 5px;
   outline: none;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-bottom: 20px;
   resize: none;
 }
 
 .Sub-mit_Button_wrap{
   display: flex;
+  width: 900px;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid black; */
 }
 
 .StarPoint{
   font-size: 35px;
   margin-left: 15px;
   text-align: center;
+}
+
+.Add_Bottom{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 730px;
+  /* border: 1px solid black; */
 }
 
 .Add_PostButton{
@@ -712,12 +696,10 @@
   display: block;
 }
 
-.Add_PostButton:hover{
-  color:#fff;
-}
-
 .hover1:hover{
   box-shadow:250px 0 0 0 rgba(0,0,0,0.5) inset;
+  animation: hoverslide 0.5s ease-in;
+  animation-fill-mode: forwards;
 }
 
 
@@ -739,9 +721,9 @@
   /* border: 1px solid black; */
 }
 
-.Info_page_TopBottomWrap{
+.Info_topWrap{
   background-color:ghostwhite;
-  box-shadow: 8px 12px 15px black;
+  box-shadow: 10px 15px 15px black;
   height: 500px;
   margin-top: 600px;
 }
@@ -757,7 +739,6 @@
   align-items: center;
   margin-top: 600px;
   background-color: whitesmoke;
-
 }
 
 .ImageInfo_wrap{
@@ -936,6 +917,23 @@
   }
 }
 
+@keyframes hoverslide {
+  0% {
+    transform: translateX(2%);
+  }
+  50% {
+    transform: translateX(-2%);
+  }
+  75% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(2%);
+  }
+  0% {
+    transform: translateX(-2%);
+  }
+}
 
 @keyframes App-logo-spin {
   from {
@@ -978,6 +976,13 @@
 @font-face {
   font-family: 'LeferiPoint-BlackA';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cafe24Ohsquareair';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/Cafe24Ohsquareair.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
