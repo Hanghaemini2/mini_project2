@@ -24,7 +24,7 @@ function Detail(props) {
             <div className="Info_User_Wrap">
               <div className="Info_user_1"> 르탄이</div>
               <div className="Info_user_2"> 2022-06-10 </div>
-              <div className="Info_user_3"><img src={Thumb}/>  1,000,000</div>
+              <button className="Info_user_3"><img src={Thumb}/> 추천!!</button>
               <div className="Info_user_4"> ★★★★★ </div>
             </div>
             <div>
