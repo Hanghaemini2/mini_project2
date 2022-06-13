@@ -5,7 +5,12 @@ import Star from "./image/star-fill.svg";
 function Add() {
 
   const [rate, setRate] = React.useState(0);
-  
+
+  const text_Title = React.useRef(null);
+  const text_Body = React.useRef(null);
+  const point_star = React.useRef(null);
+  const RePw_val = React.useRef(null);
+
   useEffect( ()=>{console.log(rate)} )
   
 
@@ -17,24 +22,22 @@ function Add() {
        <div className="Add_topWrap">
          <div className="Add_TitleWrap">
            <div>
-             <input className="Add_Title_Input" placeholder="게시물 제목"></input>
-             <textarea className="Add_Text_Input" placeholder="게시물 내용"></textarea>
+             <input ref={text_Title} className="Add_Title_Input" placeholder="게시물 제목"></input>
+             <textarea ref={text_Body} className="Add_Text_Input" placeholder="게시물 내용"></textarea>
            </div>
            <div className="Add_Bottom">
              <div className="Add_BuylinkText">
-               <label className="Add_PicButton"> 구매 링크 </label>
+               <label className="Add_textLabel"> 구매 링크 </label>
                <input className="Add_inputIURL" placeholder="구매처 링크를 입력해 주세요"></input>
              </div>
              <div className="Add_StarPoint">
-               <label className="Add_PicButton"> 도서 평점 </label>
+               <label className="Add_textLabel"> 도서 평점 </label>
                {Array.from({ length: 5 }, (item, i) => {
-                 return (<div key={i} onClick={() => { setRate(i + 1); }} className="StarPoint">
-                   <img src={Star} style={{ fill: rate < i + 1 ? "#D0C4C5" : "#823B34" }} />
-                 </div>);
-               })}
+                 return (<div key={i} onClick={() => { setRate(i + 1); }} ref={point_star} className="StarPoint" 
+                        style={{color: rate < i + 1 ? "#D0C4C5" : "#823B34" }} >★</div>);})}
              </div>
              <div className="Add_BuylinkText">
-              <input type='file' id='Add_img' accept='img/*' style={{ display: 'none' }}></input>
+              <input type='file' id='Add_img' accept='img/*' className="Add_Browse"></input>
               <label htmlFor='Add_img' className="Add_PicButton">도서 이미지 추가</label>
              </div>
            </div>

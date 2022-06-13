@@ -13,8 +13,6 @@ function Detail(props) {
     props.close(false)
   }
 
-    
-
   return(
       <div className="Info_allwrap" tabIndex={0}>
         <div className="Info_topWrap">

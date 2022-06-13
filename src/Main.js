@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Thumb from "./image/hand-thumbs-up.svg";
+import next from "./image/next_button.svg";
+import prev from "./image/prev_button.svg";
 import Cover01 from "./image/book_sample.jpeg";
 import Detail from "./Detail";
 
@@ -14,6 +16,8 @@ function Main() {
   const year = now.getFullYear();
   const date = now.getDate()
   const Today_data = [[year] + '년 \ ' + [month + 1] + '월 \ ' + [date] + '일']
+
+  const [rate, setRate] = React.useState(0);
 
 
     return (
@@ -51,6 +55,17 @@ function Main() {
             </div>
           );
         })}
+        <div className="Bottom_Numbering">
+          <div className="page">
+            <img src={prev} className="PageArrow"/>
+            <button className="Page_Number" onClick={() => () => {}} >1</button>
+            <button className="Page_Number">2</button>
+            <button className="Page_Number">3</button>
+            <button className="Page_Number">4</button>
+            <button className="Page_Number">5</button>
+            <img src={next} className="PageArrow"/>
+          </div>
+        </div>
       </div>
   );
 }
