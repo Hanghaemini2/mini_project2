@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { loadBook } from "./redux/modules/book";
+import { loadBookAxios } from "./redux/modules/book";
 
 import Thumb from "./image/hand-thumbs-up.svg";
 import next from "./image/next_button.svg";
@@ -26,7 +26,7 @@ function Main() {
       {modal === true ? <Detail close={setModal} /> : null}
       {cardLists === undefined
         ? null
-        : card_lists.map((list, i) => {
+        : cardLists.map((list, i) => {
             return (
               <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">

@@ -16,7 +16,7 @@ api.interceptors.request.use(function (config) {
 
 export const apis = {
   // article
-  bookreviews: () => api.get("/api/bookreviews"),
+  bookreviews: () => api.get("/bookreviews"),
   // user
   login: (id, pw) => api.post("/login", { username: id, password: pw }),
   signup: (id, nick, pw, pwcheck) =>
