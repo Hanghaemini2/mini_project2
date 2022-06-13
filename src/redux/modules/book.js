@@ -20,8 +20,6 @@ export function createBook(book) {
 }
 
 //middlewares
-
-
 export const loadBookAxios = () => {
   return async function (dispatch) {
     await apis
@@ -34,6 +32,18 @@ export const loadBookAxios = () => {
       });
   };
 };
+
+
+export const postBookAxios = (title, body, buyURL, starPoint, image) => {
+  return async function (dispatch) {
+    await apis
+      .bookpost(title, body, buyURL, starPoint, image)
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {

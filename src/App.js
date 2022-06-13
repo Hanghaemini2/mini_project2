@@ -7,9 +7,6 @@ import Banner03 from "./image/banner_03.jpeg";
 import LeftArrow from "./image/arrow-left-fill.svg";
 import RightArrow from "./image/arrow-right-fill.svg";
 
-
-// import { ReactComponent as BookIcon } from './image/bookIcon.svg';
-
 import "./App.css";
 
 import Main from "./Main";
