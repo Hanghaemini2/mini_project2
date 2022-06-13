@@ -43,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/FrostALee/mini_project2.git",
+  "author": "Frost <tolerate0407@gmail.com>",
+  "license": "MIT"
 }
