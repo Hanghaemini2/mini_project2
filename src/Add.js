@@ -9,7 +9,7 @@ function Add() {
   const text_Title = React.useRef(null);
   const text_Body = React.useRef(null);
   const point_star = React.useRef(null);
-  const RePw_val = React.useRef(null);
+  const text_URL = React.useRef(null);
 
   useEffect( ()=>{console.log(rate)} )
   
@@ -27,7 +27,7 @@ function Add() {
            </div>
            <div className="Add_Bottom">
              <div className="Add_BuylinkText">
-               <label className="Add_textLabel"> 구매 링크 </label>
+               <label className="Add_textLabel" ref={text_URL}> 구매 링크 </label>
                <input className="Add_inputIURL" placeholder="구매처 링크를 입력해 주세요"></input>
              </div>
              <div className="Add_StarPoint">

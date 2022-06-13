@@ -21,7 +21,6 @@ import Edit from "./Edit";
 import MyPage from "./MyPage";
 import PleaseLogin from "./PleaseLogin";
 import NotFound from "./NotFound";
-import ModalTest from "./ModalTest";
 
 function App() {
   const navigate = useNavigate();
@@ -112,8 +111,6 @@ function App() {
             <Route path="/mypage/:userId" element={<MyPage />} />
             <Route path="/pleaselogin" element={<PleaseLogin />} />
             <Route path="*" element={<NotFound />} />
-          
-            <Route path="/modaltest" element={<ModalTest />} /> {/*기능 구현 완료시 삭제 예정*/}
           </Routes>
         </div>
       </div>
