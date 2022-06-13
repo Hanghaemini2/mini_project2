@@ -1,5 +1,4 @@
 import produce from "immer";
-import { deleteCookie, setCookie } from "../../shared/Cookie";
 import { apis } from "../../shared/api";
 
 // Actions
@@ -22,6 +21,19 @@ export function createBook(book) {
 
 //middlewares
 
+
+export const loadBookAxios = () => {
+  return async function (dispatch) {
+    await apis
+      .bookreviews()
+      .then((book_data) => {
+        dispatch(loadBook(book_data.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
