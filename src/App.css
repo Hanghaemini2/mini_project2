@@ -905,11 +905,15 @@
 }
 
 .Info_user_3{
-  width: 100px;
+  width: 80px;
   font-size: 15px;
   padding: 10px;
   color: white;
+  background-color: transparent;
   text-align: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
   /* border: 1px solid black; */
 }
 
