@@ -28,23 +28,15 @@ function Main() {
         ? null
         : card_lists.map((list, i) => {
             return (
-              <div className="Card_TopwithBottom">
+              <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">
                   <div className="card_half_Wrap_Top">
                     <div className="Image_wrap">
-                      <img style={{ width: "160px" }} src={Cover01} />
+                      <img style={{ width: "160px" }} src={list.bookImageUrl} />
                     </div>
                     <div className="Text_Wrap">
-                      <div className="Text_Title_wrap">원피스 100권</div>
-                      <div className="TextField">
-                        "주역급이 한데 모인 옥상에서, 카이도 & 빅 맘에게
-                        도전하는 루피 일행.
-                        <br />
-                        최강 동맹을 상대로, 이길 방도는 있는 것일까?! 정면승부의
-                        극한에 이른 싸움 끝에 기다리는 미래란?! 오니가시마에서
-                        초격진!! <br />
-                        '원피스'를 둘러싼 해양 모험 로망!!"
-                      </div>
+                      <div className="Text_Title_wrap">{list.title}</div>
+                      <div className="TextField">{list.content}</div>
                       <div className="book_detailButton_wrap">
                         <button
                           className="book_detailButton"
@@ -61,10 +53,10 @@ function Main() {
                 <div className="card_half_Wrap_Bottom">
                   <div className="Card_bottom_thumb">
                     <img src={Thumb} />
-                    9,000,000
+                    {list.like}
                   </div>
                   <div className="Card_bottom_Profile">
-                    르탄이 / {Today_data}
+                    {list.nickname} / {list.createdDate.split("T")[0]}
                   </div>
                 </div>
               </div>
