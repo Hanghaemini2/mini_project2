@@ -1,11 +1,17 @@
 import { legacy_createStore, combineReducers, applyMiddleware } from "redux";
-import book from "./modules/book";
+
+// middlewares
 import thunk from "redux-thunk";
+import logger from "redux-logger";
+// reducers
+import user from ",/modules/user";
+import book from "./modules/book";
 
-const middlewares = [thunk];
-const rootReducer = combineReducers({ book });
-const enhancer = applyMiddleware(...middlewares);
+const rootReducer = combineReducers({ user, book });
 
-const store = legacy_createStore(rootReducer, enhancer);
+// logger 를 사용하는 경우, logger가 가장 마지막에 와야합니다.
+const middlewares = [thunk, logger];
+
+const store = legacy_createStore(rootReducer, applyMiddleware(...middlewares));
 
 export default store;
