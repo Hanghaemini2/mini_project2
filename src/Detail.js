@@ -33,7 +33,7 @@ function Detail(props) {
               <div className="Info_user_1"> 르탄이</div>
               <div className="Info_user_2"> 2022-06-10 </div>
               <button className="Info_user_3"><img src={Thumb}/> 추천!!</button>
-              <div className="Info_user_4"> {list.starPoint} </div>
+              <div className="Info_user_4"> ★★★★★ </div>
             </div>
             <div>
               <div className="Info_Title">원피스 100권</div>
