@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadBookAxios, likeAxios } from "./redux/modules/book";
+import { likeAxios, loadDetailAxios } from "./redux/modules/book";
 import { loadUser } from './redux/modules/user'
 import { useParams } from 'react-router-dom';
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -18,17 +18,13 @@ function Detail(props) {
     props.close(false)
   }
 
-  // const nameofuser = useSelector((state) => state.list);
-
+  const postInfo = useSelector((state) => state.post);
   // const nameofuser = useSelector((state) => state.user.userinfo.username);
-  // console.log(nameofuser)
+
+  console.log(postInfo)
 
   React.useEffect(() => {
-    dispatch(loadBookAxios());
-  }, []);
-
-  React.useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadDetailAxios(props.id));
   }, []);
 
   const saveLike = async () => {
@@ -42,7 +38,7 @@ function Detail(props) {
 
 
   return(
-      <div className="Info_allwrap" tabIndex={0}>
+      <div className="Info_allwrap" tabIndex={0} style={{display: postInfo === null ? "none" : ""}}>
         <div className="Info_topWrap">
           <div className="ImageInfo_wrap">
             <div className="ImageInfo_wrap_Guide"> <img style={{ width: '260px' }} src={Cover01}/> </div>

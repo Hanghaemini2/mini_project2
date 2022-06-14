@@ -5,16 +5,16 @@ import { apis } from "../../shared/api";
 const LOAD = "book/LOAD";
 const CREATE = "book/CREATE";
 const PAGE = "book/PAGE";
-const UPDATE = 'book/UPDATE'
+const UPDATE = "book/UPDATE"
+const DETAIL = "book/DETAIL"
 
 
 // Initial State
 const initialState = {
   list: [],
+  post: null,
   currentPage: 0,
 };
-
-
 
 // Action Creators
 export function loadBook(book_list) {
@@ -32,7 +32,12 @@ export function editBook(book_edit) {
 export function changePage(page) {
   return { type: PAGE, page };
 }
+
+export function detailPage(detail) {
+  return { type: PAGE, detail };
+}
   
+
 //middlewares
 export const loadBookAxios = () => {
   return async function (dispatch) {
@@ -48,6 +53,19 @@ export const loadBookAxios = () => {
   };
 };
 
+export const loadDetailAxios = (id) => {
+  return async function (dispatch) {
+    await apis
+      .bookDetail(id)
+      .then((book_data) => {
+        dispatch(detailPage(book_data.data));
+        console.log(book_data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export const postBookAxios = (title, body, buyURL, starPoint, image) => {
   return async function (dispatch) {
@@ -69,19 +87,24 @@ export const likeAxios = () => {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case "book/LOAD": {
-      return { list: action.book_list, currentPage: state.currentPage };
+      return { list: action.book_list, post: state.post, currentPage: state.currentPage };
     }
     case "book/CREATE": {
       const new_book_list = [...state.list, action.post];
-      return { list: new_book_list, currentPage: state.currentPage };
+      return { list: new_book_list, post: state.post, currentPage: state.currentPage };
     }
     case "book/PAGE": {
-      return { list: state.list, currentPage: action.page };
+      return { list: state.list, post: state.post, currentPage: action.page };
     }
     case "book/UPDATE": {
-      const UPDATE = [...state.list, action.book_edit];
-      return { list: action.book_edit };
+      // const UPDATE = [...state.list, action.book_edit];
+      return { list: action.book_edit, post: state.post, currentPage: state.currentPage };
     }
+    case "book/DETAIL": {
+      return { list: state.list, post: action.detail, currentPage: state.currentPage };
+    }
+
+
     // do reducer stuff
     default:
       return state;
