@@ -40,7 +40,6 @@ export const apis = {
   bookreviews: () => api.get("/bookreviews"),
   bookpost: (title, body, buyURL, starPoint, image) => imgApi.post("/bookpost", 
     {
-
       bookBuyUrl: buyURL,
       rank: starPoint,
       file: image,

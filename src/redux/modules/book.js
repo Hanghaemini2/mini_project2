@@ -4,6 +4,7 @@ import { apis } from "../../shared/api";
 // Actions
 const LOAD = "book/LOAD";
 const CREATE = "book/CREATE";
+const UPDATE = 'book/UPDATE'
 
 // Initial State
 const initialState = {
@@ -17,6 +18,10 @@ export function loadBook(book_list) {
 
 export function createBook(book) {
   return { type: CREATE, book };
+}
+
+export function editBook(book_edit) {
+  return { type: UPDATE, book_edit };
 }
 
 //middlewares
@@ -54,6 +59,10 @@ export default function reducer(state = initialState, action = {}) {
     case "book/CREATE": {
       const new_book_list = [...state.list, action.post];
       return { list: new_book_list };
+    }
+    case "book/UPDATE": {
+      const UPDATE = [...state.list, action.book_edit];
+      return { list: action.book_edit };
     }
     // do reducer stuff
     default:
