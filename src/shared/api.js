@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 // axios create (axios 골격)
 const imgApi = axios.create({
   baseURL: "http://localhost:5001",
@@ -17,13 +16,13 @@ const api = axios.create({
   },
 });
 
-
 // interruptor (유저의 로그인 정보)
 api.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
   config.headers.common["JWTToken"] = `${accessToken}`;
   return config;
 });
+
 
 
 imgApi.interceptors.request.use(function (config) {
@@ -41,22 +40,22 @@ export const apis = {
   bookreviews: () => api.get("/bookreviews"),
   bookpost: (title, body, buyURL, starPoint, image) => imgApi.post("/bookpost", 
     {
+
       bookBuyUrl: buyURL,
       rank: starPoint,
       file: image,
       title: title,
-      content: body
+      content: body,
     }),
 
   // user
   login: (id, pw) => api.post("/login", { username: id, password: pw }),
   signup: (id, nick, pw, pwcheck) =>
-    api.post("/api/signup", {
+    api.post("/signup", {
       username: id,
       nickname: nick,
       password: pw,
       confirmPassword: pwcheck,
     }),
+  usercheck: () => api.get("/authentication"),
 };
-
-

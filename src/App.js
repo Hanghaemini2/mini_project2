@@ -29,7 +29,12 @@ function App() {
         <div className="Wrap">
           <div className="HeadHeader">
             <div className="HomeWrap">
-              <span className="LOGONAME" onClick={() => {navigate(`/`);}}>
+              <span
+                className="LOGONAME"
+                onClick={() => {
+                  navigate(`/`);
+                }}
+              >
                 <i>책크잇!!</i>
               </span>
             </div>
@@ -50,10 +55,10 @@ function App() {
           </div>
           <div className="Divide_wrap">
             <div className="Wing_left"></div>
-            <div className="DivideBar">
-            </div>
+            <div className="DivideBar"></div>
             <div className="Wing_right"></div>
           </div>
+
           <div className="HeadBody">
             <div className="LeftArrow">
               <img src={LeftArrow} onClick={() => {
@@ -61,13 +66,25 @@ function App() {
             </div>
             <div className="BannerWrap">
               <div className="Center_image">
-                <img src={Banner01} className='ImgAnimation' style={{ display: bannerState === 1 ? "" : "none" }}/>
-              </div>
-              <div className="Center_image"> 
-                <img src={Banner02} className='ImgAnimation' style={{ display: bannerState === 2 ? "" : "none" }}/>
+                <img
+                  src={Banner01}
+                  className="ImgAnimation"
+                  style={{ display: bannerState === 1 ? "" : "none" }}
+                />
               </div>
               <div className="Center_image">
-                <img src={Banner03} className='ImgAnimation' style={{ display: bannerState === 3 ? "" : "none" }}/>
+                <img
+                  src={Banner02}
+                  className="ImgAnimation"
+                  style={{ display: bannerState === 2 ? "" : "none" }}
+                />
+              </div>
+              <div className="Center_image">
+                <img
+                  src={Banner03}
+                  className="ImgAnimation"
+                  style={{ display: bannerState === 3 ? "" : "none" }}
+                />
               </div>
             </div>
             <div className="RightArrow">
@@ -78,6 +95,7 @@ function App() {
           <div className="HeadFooter"></div>
           <Routes>
             <Route path="/" element={<Main />} />
+            <Route path="/:pageNum" element={<Main />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/add" element={<Add />} />
