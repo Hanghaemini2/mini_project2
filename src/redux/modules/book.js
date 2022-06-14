@@ -38,6 +38,7 @@ export const loadBookAxios = () => {
       .bookreviews()
       .then((book_data) => {
         dispatch(loadBook(book_data.data));
+        console.log(book_data)
       })
       .catch((err) => {
         console.log(err);
