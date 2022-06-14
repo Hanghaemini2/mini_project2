@@ -24,6 +24,20 @@ export function logOut(userInfo) {
 }
 
 //middlewares
+export const loadUser = () => {
+  return async function (dispatch) {
+    await apis
+      .bookreviews()
+      .then((user_data) => {
+        dispatch(login(user_data.data));
+        console.log(user_data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 
 export const loginAxios = (id, pw) => {
   return async function (dispatch) {

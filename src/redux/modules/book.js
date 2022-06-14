@@ -5,6 +5,8 @@ import { apis } from "../../shared/api";
 const LOAD = "book/LOAD";
 const CREATE = "book/CREATE";
 const PAGE = "book/PAGE";
+const UPDATE = 'book/UPDATE'
+
 
 // Initial State
 const initialState = {
@@ -21,10 +23,14 @@ export function createBook(book) {
   return { type: CREATE, book };
 }
 
+export function editBook(book_edit) {
+  return { type: UPDATE, book_edit };
+}
+
 export function changePage(page) {
   return { type: PAGE, page };
 }
-
+  
 //middlewares
 export const loadBookAxios = () => {
   return async function (dispatch) {
@@ -59,6 +65,10 @@ export default function reducer(state = initialState, action = {}) {
     }
     case "book/PAGE": {
       return { list: state.list, currentPage: action.page };
+    }
+    case "book/UPDATE": {
+      const UPDATE = [...state.list, action.book_edit];
+      return { list: action.book_edit };
     }
     // do reducer stuff
     default:

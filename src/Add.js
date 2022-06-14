@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { loadBookAxios } from "./redux/modules/book";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { postBookAxios } from './redux/modules/book'
+import { loadUser } from './redux/modules/user'
 import Star from "./image/star-fill.svg";
 
 
@@ -19,12 +21,24 @@ function Add() {
   // const point_star = React.useRef(null);
   const text_URL = React.useRef(null);
 
+
+  React.useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+  console.log(loadUser())
+
+    let frm = new FormData();
+    let photoFile = document.getElementById('Add_img');
+
+
   const savePost = async () => {
+      frm.append('Add_img', photoFile.files[0])
       await dispatch(postBookAxios(
         text_Title.current.value,
         text_Body.current.value,
         rate,
-        text_URL.current.value
+        text_URL.current.value,
+        frm
         ))
         .then(() => {
           navigate(`/`)
@@ -36,7 +50,7 @@ function Add() {
    <div>
      <div className="Add_allwrap">
        <span className="PageTitle">게시물 작성</span>
-       <span className="Page_guide">반가워요 [닉네임]님, 오늘은 어떤 책을 소개해 주실까요?</span>
+       <span className="Page_guide">반가워요 [유저 네임]님, 오늘은 어떤 책을 소개해 주실까요?</span>
        <div className="Add_topWrap">
          <div className="Add_TitleWrap">
            <div>
@@ -54,10 +68,10 @@ function Add() {
                  return (<div key={i} onClick={() => { setRate(i + 1); }} className="StarPoint" 
                         style={{color: rate < i + 1 ? "#D0C4C5" : "#823B34" }} >★</div>);})}
              </div>
-             <div className="Add_BuylinkText">
+             <form className="Add_BuylinkText">
               <input type='file' id='Add_img' accept='img/*' className="Add_Browse"></input>
               <label htmlFor='Add_img' className="Add_PicButton">도서 이미지 추가</label>
-             </div>
+             </form>
            </div>
          </div>
        </div>
