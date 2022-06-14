@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { signupAxios } from "./redux/modules/user";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
