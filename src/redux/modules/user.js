@@ -8,31 +8,61 @@ const LOGOUT = "user/LOGOUT";
 
 // initialState
 const initialState = {
-  username: null,
-  nickname: null,
-  is_login: false,
+  userinfo: {
+    username: null,
+    is_login: false,
+  },
 };
 
 // action creator
-export function loginUser(userInfo) {
-  return { type: LOGIN, userInfo };
+export function login(id) {
+  return { type: LOGIN, id };
 }
 
-export function logOutUser(userInfo) {
+export function logOut(userInfo) {
   return { type: LOGOUT, userInfo };
 }
 
 //middlewares
 
+export const loginAxios = (id, pw) => {
+  return async function (dispatch) {
+    apis.login(id, pw).catch((err) => {
+      console.log(err);
+    });
+  };
+};
+
+export const signupAxios = (id, nick, pw, pwcheck) => {
+  return async function (dispatch) {
+    apis
+      .signup(id, nick, pw, pwcheck)
+      .then(() => {
+        dispatch(login(id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 // reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case "user/LOGIN": {
-      return { list: action.book_list };
+      const newUserInfo = {
+        username: action.id,
+        is_login: true,
+      };
+      return { userinfo: newUserInfo };
     }
     case "user/LOGOUT": {
-      const new_book_list = [...state.list, action.post];
-      return { list: new_book_list };
+      deleteCookie("JWTToken");
+      const newUserInfo = {
+        username: null,
+        is_login: false,
+      };
+      return { userinfo: newUserInfo };
     }
     // do reducer stuff
     default:

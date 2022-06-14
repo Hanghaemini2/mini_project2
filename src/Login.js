@@ -1,8 +1,8 @@
 import React from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import './App.css';
-import axios from "axios";
+import "./App.css";
+import { loginAxios } from "./redux/modules/user";
 
 import "./App.css";
 
@@ -14,11 +14,11 @@ function Login() {
 
   window.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
-      loginAxios();
+      loginFunction();
     }
   });
 
-  const loginAxios = async () => {
+  const loginFunction = async () => {
     if (
       usernameRef.current.value === "" ||
       passwordRef.current.value === "" ||
@@ -32,15 +32,7 @@ function Login() {
     }
     document.getElementById("LoginBtn").disabled = true;
     try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:5001/login",
-        data: {
-          username: usernameRef.current.value,
-          password: passwordRef.current.value,
-        },
-      });
-      console.log(response);
+      loginAxios();
       navigate("/");
       alert("로그인되었습니다!");
     } catch (err) {
@@ -79,11 +71,20 @@ function Login() {
               />
             </div>
           </div>
-          <span>아직 책크잇의 회원이 아니시라면 책크잇의 회원이 되어 보세요. <b className="LogintoJoin" 
-          onClick={() => {navigate(`/signup`)}}>회원가입 바로 가기</b></span>
+          <span>
+            아직 책크잇의 회원이 아니시라면 책크잇의 회원이 되어 보세요.{" "}
+            <b
+              className="LogintoJoin"
+              onClick={() => {
+                navigate(`/signup`);
+              }}
+            >
+              회원가입 바로 가기
+            </b>
+          </span>
         </div>
         <div className="Login_Bottom">
-          <button className="LoginButton" id="LoginBtn" onClick={loginAxios}>
+          <button className="LoginButton" id="LoginBtn" onClick={loginFunction}>
             로그인
           </button>
         </div>

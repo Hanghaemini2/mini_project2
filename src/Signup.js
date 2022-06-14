@@ -12,11 +12,11 @@ function Signup() {
 
   window.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
-      signupAxios();
+      signupFunction();
     }
   });
 
-  const signupAxios = async () => {
+  const signupFunction = async () => {
     if (
       usernameRef.current.value === "" ||
       nicknameRef.current.value === "" ||
@@ -36,18 +36,13 @@ function Signup() {
     }
     document.getElementById("SigninBtn").disabled = true;
     try {
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:5001/signup",
-        data: {
-          username: usernameRef.current.value,
-          nickname: nicknameRef.current.value,
-          password: passwordRef.current.value,
-          confirmPassword: confirmPasswordRef.current.value,
-        },
-      });
-      console.log(response);
-      navigate("/");
+      await signupAxios(
+        usernameRef.current.value,
+        nicknameRef.current.value,
+        passwordRef.current.value,
+        confirmPasswordRef.current.value
+      );
+      navigate("/login");
       alert("회원가입되었습니다!");
     } catch (err) {
       console.log("Error >>", err);
@@ -63,9 +58,8 @@ function Signup() {
             <div className="GuideBanner_join">
               <p className="Join_text_1"> 책크잇 회원 가입 </p>
               <p className="Join_text_2">
-                {" "}
                 책크잇의 회원이 되시고 읽고 싶었던 책의 다양한 리뷰를 읽어
-                보세요{" "}
+                보세요
               </p>
             </div>
             <div className="Join_inputWrap">
@@ -108,7 +102,11 @@ function Signup() {
             </div>
           </div>
           <div className="Join_Bottom">
-            <button className="JoinButton" id="SigninBtn" onClick={signupAxios}>
+            <button
+              className="JoinButton"
+              id="SigninBtn"
+              onClick={signupFunction}
+            >
               회원가입
             </button>
           </div>
