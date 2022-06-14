@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { loadBookAxios } from "./redux/modules/book";
+import { loadBookAxios, likeAxios } from "./redux/modules/book";
 import { useParams } from 'react-router-dom';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -18,11 +18,16 @@ function Detail(props) {
     props.close(false)
   }
 
+
   React.useEffect(() => {
     dispatch(loadBookAxios());
   }, []);
 
-  // console.log(useEffect())
+
+  const saveLike = async () => {
+    await dispatch(likeAxios(
+      ))
+}
 
   const deleteText = () => {
     if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
@@ -41,7 +46,7 @@ function Detail(props) {
             <div className="Info_User_Wrap">
               <div className="Info_user_1"> 르탄이</div>
               <div className="Info_user_2"> 2022-06-10 </div>
-              <button className="Info_user_3"><img src={Thumb}/> 추천!!</button>
+              <button className="Info_user_3" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
               <div className="Info_user_4"> ★★★★★ </div>
             </div>
             <div>
