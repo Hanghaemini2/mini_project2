@@ -25,6 +25,7 @@ function Add() {
   React.useEffect(() => {
     dispatch(loadUser());
   }, []);
+  
   console.log(loadUser())
 
     let frm = new FormData();
