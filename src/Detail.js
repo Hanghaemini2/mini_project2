@@ -10,7 +10,7 @@ import Close from "./image/closeButton.svg";
 
 function Detail(props) {
   const dispatch = useDispatch()
-  const useParams = useParams()
+  const Params = useParams()
 
   const CloseModal = () => { 
     props.close(false)
@@ -42,7 +42,8 @@ function Detail(props) {
                             최강 동맹을 상대로, 이길 방도는 있는 것일까?!
                             정면승부의 극한에 이른 싸움 끝에 기다리는 미래란?!
                             오니가시마에서 초격진!! <br />
-                            '원피스'를 둘러싼 해양 모험 로망!!"</div>
+                            '원피스'를 둘러싼 해양 모험 로망!!"
+              </div>
             </div>
             <div className="EditWrap">
               <span className="Edit_Body">수정하기 </span>
@@ -69,6 +70,3 @@ function Detail(props) {
 }
 
 export default Detail;
-
-
-// onClick={console.log('X 버튼을 눌렀구만 자네')} 

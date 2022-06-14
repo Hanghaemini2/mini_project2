@@ -29,7 +29,7 @@ export const loadUser = () => {
     await apis
       .bookreviews()
       .then((user_data) => {
-        dispatch(loginUser(user_data.data));
+        dispatch(login(user_data.data));
         console.log(user_data)
       })
       .catch((err) => {
