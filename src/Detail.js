@@ -13,16 +13,13 @@ function Detail(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-
   const CloseModal = () => { 
     props.close(false)
   }
 
-
   React.useEffect(() => {
     dispatch(loadBookAxios());
   }, []);
-
 
   const saveLike = async () => {
     await dispatch(likeAxios(
@@ -32,7 +29,6 @@ function Detail(props) {
   const deleteText = () => {
     if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
   }
-
 
 
   return(

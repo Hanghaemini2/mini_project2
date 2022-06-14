@@ -63,8 +63,6 @@ export const likeAxios = () => {
   };
 };
 
-
-
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
