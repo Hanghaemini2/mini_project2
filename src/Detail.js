@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadBookAxios } from "./redux/modules/book";
 import { useParams } from 'react-router-dom';
+import { Routes, Route, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 import Thumb from "./image/hand-thumbs-up.svg";
@@ -10,7 +11,7 @@ import Close from "./image/closeButton.svg";
 
 function Detail(props) {
   const dispatch = useDispatch()
-  const Params = useParams()
+  const navigate = useNavigate()
 
   const CloseModal = () => { 
     props.close(false)
@@ -20,6 +21,11 @@ function Detail(props) {
     dispatch(loadBookAxios());
   }, []);
 
+  // console.log(useEffect())
+
+  const deleteText = () => {
+    if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
+  }
 
   return(
       <div className="Info_allwrap" tabIndex={0}>
@@ -46,9 +52,9 @@ function Detail(props) {
               </div>
             </div>
             <div className="EditWrap">
-              <span className="Edit_Body">수정하기 </span>
+              <span className="Edit_Body" onClick={() => {navigate(`/edit/:postId`);}}>수정하기 </span>
               <span>| </span>
-              <span className="DeleteText">삭제하기 </span>
+              <span className="DeleteText" onClick={deleteText}>삭제하기 </span>
             </div>
           </div>
         </div>
