@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loadBookAxios } from "./redux/modules/book";
+import React, { useState, useEffect  } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loadBookAxios, likeAxios } from "./redux/modules/book";
+import { loadUser } from './redux/modules/user'
 import { useParams } from 'react-router-dom';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -13,21 +14,31 @@ function Detail(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-
   const CloseModal = () => { 
     props.close(false)
   }
+
+  // const nameofuser = useSelector((state) => state.list);
+
+  // const nameofuser = useSelector((state) => state.user.userinfo.username);
+  // console.log(nameofuser)
 
   React.useEffect(() => {
     dispatch(loadBookAxios());
   }, []);
 
-  // console.log(useEffect())
+  React.useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+
+  const saveLike = async () => {
+    await dispatch(likeAxios(
+      ))
+}
 
   const deleteText = () => {
     if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
   }
-
 
 
   return(
@@ -39,9 +50,9 @@ function Detail(props) {
           <div className="Info_TitleWrap">
             <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
             <div className="Info_User_Wrap">
-              <div className="Info_user_1"> 르탄이</div>
+              <div className="Info_user_1"> {}</div>
               <div className="Info_user_2"> 2022-06-10 </div>
-              <button className="Info_user_3"><img src={Thumb}/> 추천!!</button>
+              <button className="Info_user_3" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
               <div className="Info_user_4"> ★★★★★ </div>
             </div>
             <div>

@@ -14,6 +14,8 @@ const initialState = {
   currentPage: 0,
 };
 
+
+
 // Action Creators
 export function loadBook(book_list) {
   return { type: LOAD, book_list };
@@ -46,9 +48,18 @@ export const loadBookAxios = () => {
   };
 };
 
+
 export const postBookAxios = (title, body, buyURL, starPoint, image) => {
   return async function (dispatch) {
     await apis.bookpost(title, body, buyURL, starPoint, image).catch((err) => {
+      console.log(err);
+    });
+  };
+};
+
+export const likeAxios = () => {
+  return async function (dispatch) {
+    await apis.likeit().catch((err) => {
       console.log(err);
     });
   };

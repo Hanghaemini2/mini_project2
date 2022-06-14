@@ -25,6 +25,8 @@ function Main() {
     dispatch(loadBookAxios());
   }, []);
 
+
+
   return (
     <div className="Card_field">
       {modal === true ? <Detail close={setModal} id={modalId} /> : null}
