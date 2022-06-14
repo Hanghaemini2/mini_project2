@@ -95,7 +95,6 @@ function App() {
           <div className="HeadFooter"></div>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/:pageNum" element={<Main />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/add" element={<Add />} />
