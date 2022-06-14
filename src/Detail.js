@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect  } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { loadBookAxios, likeAxios } from "./redux/modules/book";
+import { loadUser } from './redux/modules/user'
 import { useParams } from 'react-router-dom';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -17,8 +18,17 @@ function Detail(props) {
     props.close(false)
   }
 
+  // const nameofuser = useSelector((state) => state.list);
+
+  // const nameofuser = useSelector((state) => state.user.userinfo.username);
+  // console.log(nameofuser)
+
   React.useEffect(() => {
     dispatch(loadBookAxios());
+  }, []);
+
+  React.useEffect(() => {
+    dispatch(loadUser());
   }, []);
 
   const saveLike = async () => {
@@ -40,7 +50,7 @@ function Detail(props) {
           <div className="Info_TitleWrap">
             <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
             <div className="Info_User_Wrap">
-              <div className="Info_user_1"> 르탄이</div>
+              <div className="Info_user_1"> {}</div>
               <div className="Info_user_2"> 2022-06-10 </div>
               <button className="Info_user_3" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
               <div className="Info_user_4"> ★★★★★ </div>

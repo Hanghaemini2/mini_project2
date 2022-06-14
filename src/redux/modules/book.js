@@ -14,6 +14,8 @@ const initialState = {
   currentPage: 0,
 };
 
+
+
 // Action Creators
 export function loadBook(book_list) {
   return { type: LOAD, book_list };
