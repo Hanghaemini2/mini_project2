@@ -70,7 +70,7 @@ function Add() {
              </div>
              <form className="Add_BuylinkText">
               <input type='file' id='Add_img' accept='img/*' className="Add_Browse"></input>
-              <label htmlFor='Add_img' className="Add_PicButton">도서 이미지 추가</label>
+              <label htmlFor='Add_img' className="Add_textLabel"> 도서 이미지 </label>
              </form>
            </div>
          </div>
