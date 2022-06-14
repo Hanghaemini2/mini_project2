@@ -46,7 +46,9 @@ export const apis = {
       title: title,
       content: body,
     }),
-  likeit: () => api.post('/bookreviews/like'),
+  likeit: () => api.post("/bookreviews/like"),
+  bookDetail: (id) => api.get("/bookreview/" + id),
+
 
   // user
   login: (id, pw) => api.post("/login", { username: id, password: pw }),
