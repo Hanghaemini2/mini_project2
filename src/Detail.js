@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loadBookAxios } from "./redux/modules/book";
+
+
 import ReactDOM from "react-dom";
 
 import Thumb from "./image/hand-thumbs-up.svg";
 import Cover01 from "./image/book_sample.jpeg";
 import Close from "./image/closeButton.svg";
 
-
-
 function Detail(props) {
- 
+  const dispatch = useDispatch()
+
   const CloseModal = () => { 
     props.close(false)
   }
+
+  React.useEffect(() => {
+    dispatch(loadBookAxios());
+  }, []);
+
 
   return(
       <div className="Info_allwrap" tabIndex={0}>
         <div className="Info_topWrap">
           <div className="ImageInfo_wrap">
-            <div className="ImageInfo_wrap_Guide"> <img style={{ width: '240px' }} src={Cover01}/> </div>
+            <div className="ImageInfo_wrap_Guide"> <img style={{ width: '260px' }} src={Cover01}/> </div>
           </div>
           <div className="Info_TitleWrap">
             <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
@@ -35,6 +43,11 @@ function Detail(props) {
                             정면승부의 극한에 이른 싸움 끝에 기다리는 미래란?!
                             오니가시마에서 초격진!! <br />
                             '원피스'를 둘러싼 해양 모험 로망!!"</div>
+            </div>
+            <div className="EditWrap">
+              <span className="Edit_Body">수정하기 </span>
+              <span>| </span>
+              <span className="DeleteText">삭제하기 </span>
             </div>
           </div>
         </div>

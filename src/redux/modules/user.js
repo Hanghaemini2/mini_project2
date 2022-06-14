@@ -23,6 +23,20 @@ export function logOutUser(userInfo) {
 }
 
 //middlewares
+export const loadUser = () => {
+  return async function (dispatch) {
+    await apis
+      .bookreviews()
+      .then((user_data) => {
+        dispatch(loginUser(user_data.data));
+        console.log(user_data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
 
 // reducer
 export default function reducer(state = initialState, action = {}) {

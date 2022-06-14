@@ -2,6 +2,13 @@ import axios from "axios";
 
 
 // axios create (axios 골격)
+const imgApi = axios.create({
+  baseURL: "http://localhost:5001",
+  headers: {
+    "content-type": "multipart/form-data"
+  }
+})
+
 const api = axios.create({
   baseURL: "http://localhost:5001",
   headers: {
@@ -19,12 +26,20 @@ api.interceptors.request.use(function (config) {
 });
 
 
+imgApi.interceptors.request.use(function (config) {
+  const accessToken = document.cookie.split("=")[1];
+  config.headers.common["JWTToken"] = `${accessToken}`;
+  return config;
+});
+
+
+
 // api body
 export const apis = {
-  
+
   // article (에이젝스 요청)
   bookreviews: () => api.get("/bookreviews"),
-  bookpost: (title, body, buyURL, starPoint, image) => api.post("/bookpost", 
+  bookpost: (title, body, buyURL, starPoint, image) => imgApi.post("/bookpost", 
     {
       bookBuyUrl: buyURL,
       rank: starPoint,

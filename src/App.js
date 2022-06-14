@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import Banner01 from "./image/Banner_01.jpeg";
 import Banner02 from "./image/banner_02.jpeg";
@@ -35,28 +35,15 @@ function App() {
             </div>
             <div className="Button_headWrap">
               <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/signup`);
-                }}
-              >
-                회원가입
-              </button>
+                className="HeadButton" onClick={() => {navigate(`/signup`);}}>
+                회원가입</button>
               |
               <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/login`);
-                }}
-              >
+                className="HeadButton" onClick={() => {navigate(`/login`);}}>
                 로그인
               </button>
               <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/add`);
-                }}
-              >
+                className="HeadButton" onClick={() => {navigate(`/add`);}}>
                 게시물 작성
               </button>
             </div>
@@ -67,15 +54,10 @@ function App() {
             </div>
             <div className="Wing_right"></div>
           </div>
-          
           <div className="HeadBody">
             <div className="LeftArrow">
-              <img
-                src={LeftArrow}
-                onClick={() => {
-                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);
-                }}
-              />
+              <img src={LeftArrow} onClick={() => {
+                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);}}/>
             </div>
             <div className="BannerWrap">
               <div className="Center_image">
@@ -89,12 +71,8 @@ function App() {
               </div>
             </div>
             <div className="RightArrow">
-              <img
-                src={RightArrow}
-                onClick={() => {
-                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);
-                }}
-              />
+              <img src={RightArrow} onClick={() => {
+                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);}}/>
             </div>
           </div>
           <div className="HeadFooter"></div>
