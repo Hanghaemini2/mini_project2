@@ -1,9 +1,7 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { likeAxios, loadDetailAxios } from "./redux/modules/book";
-import { loadUserAxios } from './redux/modules/user'
-import { useParams } from 'react-router-dom';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { likeAxios, loadDetailAxios, loadBookAxios } from "./redux/modules/book";
+import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 import Thumb from "./image/hand-thumbs-up.svg";
@@ -17,29 +15,32 @@ function Detail(props) {
   const CloseModal = () => { 
     props.close(false)
   }
-
-  const postInfo = useSelector((state) => state.post);
+  const nicknameInfo = useSelector((state) => state.user.userinfo.nickname);
+  const loginInfo = useSelector((state) => state.user.userinfo.is_login);
+  const cardLists = useSelector((state) => state.book.list.rank);  
+  const postInfo = useSelector((state) => state.book.post);
   // const nameofuser = useSelector((state) => state.user.userinfo.username);
-
+  
   console.log(postInfo)
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
-  }, []);
-
-  React.useEffect(() => {
-    dispatch(loadUserAxios());
-  }, []);
+  }, [1]);
 
   const saveLike = async () => {
-    await dispatch(likeAxios(
-      ))
-}
+    if ( postInfo.userLikeStatus === true) {
+      await dispatch(likeAxios(props.id))
+      document.getElementById('LikeBtn').disabled = true
+    }else if (loginInfo) {
+      alert('이미 추천을 누르셨습니다')
+    }else{
+      alert('로그인한 유저만 추천할 수 있습니다')
+    }
+  }
 
   const deleteText = () => {
     if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
   }
-
 
   return(
       <div className="Info_allwrap" tabIndex={0} style={{display: postInfo === null ? "none" : ""}}>
@@ -50,10 +51,10 @@ function Detail(props) {
           <div className="Info_TitleWrap">
             <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
             <div className="Info_User_Wrap">
-              <div className="Info_user_1"> {}</div>
+              <div className="Info_user_1"> {nicknameInfo}</div>
               <div className="Info_user_2"> 2022-06-10 </div>
-              <button className="Info_user_3" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
-              <div className="Info_user_4"> ★★★★★ </div>
+              <button className="Info_user_3" id="LikeBtn" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
+              <div className="Info_user_4"> {cardLists} </div>
             </div>
             <div>
               <div className="Info_Title">원피스 100권</div>

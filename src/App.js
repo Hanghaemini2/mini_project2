@@ -38,7 +38,7 @@ function App() {
     if(loginInfo === false) {
       dispatch(loadUserAxios())
     }
-  }, []);
+  }, [1]);
 
 
   return (
@@ -66,6 +66,9 @@ function App() {
               로그아웃 </button>
               <button className="HeadButton" onClick={() => {navigate(`/add`)}}>
                 게시물 작성
+              </button>
+              <button className="HeadButton" onClick={() => {navigate(`/detail`)}}>
+                상세페이지
               </button>
             </div>
           </div>
