@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadUserAxios, likeAxios, loadDetailAxios, deleteAxios } from "./redux/modules/book";
+import { likeAxios, loadDetailAxios, deleteAxios } from "./redux/modules/book";
 import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 
@@ -9,14 +9,8 @@ import Cover01 from "./image/book_sample.jpeg";
 import Close from "./image/closeButton.svg";
 
 function Detail(props) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-
-
-  React.useEffect(() => {
-    dispatch(loadUserAxios());
-  }, []);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const CloseModal = () => { 
     props.close(false)
@@ -28,13 +22,19 @@ function Detail(props) {
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
+    console.log(postInfo)
   }, [1]);
 
-
   const saveLike = async () => {
-    await dispatch(likeAxios());
-  };
-
+    if ( postInfo.userLikeStatus === true) {
+      await dispatch(likeAxios(props.id))
+      document.getElementById('LikeBtn').disabled = true
+    }else if (loginInfo) {
+      alert('이미 추천을 누르셨습니다')
+    }else{
+      alert('로그인한 유저만 추천할 수 있습니다')
+    }
+  }
 
   const delBook = async () => {
     window.confirm('게시물을 삭제 하시겠습니까? \n삭제 된 데이터는 복구할 수 없습니다.')
@@ -67,23 +67,8 @@ function Detail(props) {
               <span className="DeleteText" onClick={delBook}>삭제하기 </span>
             </div>
           </div>
-          <div className="EditWrap">
-            <span
-              className="Edit_Body"
-              onClick={() => {
-                navigate(`/edit/:postId`);
-              }}
-            >
-              수정하기{" "}
-            </span>
-            <span>| </span>
-            <span className="DeleteText" onClick={deleteText}>
-              삭제하기{" "}
-            </span>
-          </div>
         </div>
-      </div>
-      {/* <div className="Info_bottomWrap">
+        {/* <div className="Info_bottomWrap">
             <ul>댓글 
               <li>르탄이 | 벌써 100권이나 나왔네요</li>
               <li>르탄이 | 벌써 100권이나 나왔네요</li>
@@ -96,7 +81,7 @@ function Detail(props) {
               <li>르탄이 | 벌써 100권이나 나왔네요</li>
             </ul>
         </div> */}
-    </div>
+      </div>
   );
 }
 
