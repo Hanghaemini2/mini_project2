@@ -7,6 +7,7 @@ const CREATE = "book/CREATE";
 const PAGE = "book/PAGE";
 const UPDATE = "book/UPDATE"
 const DETAIL = "book/DETAIL"
+const DELETE = "book/DELETE"
 
 // Initial State
 const initialState = {
@@ -35,7 +36,10 @@ export function changePage(page) {
 export function detailPage(detail) {
   return { type: PAGE, detail };
 }
-  
+ 
+export function deleteBook(delbook) {
+  return { type: PAGE, delbook };
+}
 
 //middlewares
 export const loadBookAxios = () => {
@@ -77,7 +81,15 @@ export const postBookAxios = (title, body, buyURL, starPoint, image) => {
 export const likeAxios = (id) => {
   return async function (dispatch) {
     await apis.likeit(id)
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+};
 
+export const deleteAxios = (id) => {
+  return async function (dispatch) {
+    await apis.deleteCard(id)
     .catch((err) => {
       console.log(err);
     });

@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { likeAxios, loadDetailAxios, loadBookAxios } from "./redux/modules/book";
+import { likeAxios, loadDetailAxios, deleteAxios } from "./redux/modules/book";
 import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import ReactDOM from "react-dom";
 
@@ -15,13 +15,13 @@ function Detail(props) {
   const CloseModal = () => { 
     props.close(false)
   }
-  const nicknameInfo = useSelector((state) => state.user.userinfo.nickname);
   const loginInfo = useSelector((state) => state.user.userinfo.is_login);
   const cardLists = useSelector((state) => state.book.list.rank);  
   const postInfo = useSelector((state) => state.book.post);
   // const nameofuser = useSelector((state) => state.user.userinfo.username);
   
   console.log(postInfo)
+  console.log(cardLists)
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
@@ -38,6 +38,10 @@ function Detail(props) {
     }
   }
 
+  const delBook = async () => {
+    await dispatch(deleteAxios(props.id))
+  }
+
   const deleteText = () => {
     if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
   }
@@ -51,7 +55,7 @@ function Detail(props) {
           <div className="Info_TitleWrap">
             <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
             <div className="Info_User_Wrap">
-              <div className="Info_user_1"> {nicknameInfo}</div>
+              <div className="Info_user_1"> {}</div>
               <div className="Info_user_2"> 2022-06-10 </div>
               <button className="Info_user_3" id="LikeBtn" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
               <div className="Info_user_4"> {cardLists} </div>
@@ -69,7 +73,7 @@ function Detail(props) {
             <div className="EditWrap">
               <span className="Edit_Body" onClick={() => {navigate(`/edit/:postId`);}}>수정하기 </span>
               <span>| </span>
-              <span className="DeleteText" onClick={deleteText}>삭제하기 </span>
+              <span className="DeleteText" onClick={delBook}>삭제하기 </span>
             </div>
           </div>
         </div>
