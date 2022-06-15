@@ -45,35 +45,13 @@ function Signup() {
           passwordRef.current.value,
           confirmPasswordRef.current.value
         )
-      ).then((res) => {
-        if (res === true) {
-          console.log(res);
-          navigate("/login");
-          alert("회원가입되었습니다!");
-        } else {
-          if (res.response.data.message === "the username already exists.") {
-            alert("이미 가입된 ID입니다!");
-            document.getElementById("SigninBtn").disabled = false;
-          } else if (
-            res.response.data.message === "the nickname already exists."
-          ) {
-            alert("이미 가입된 닉네임입니다!");
-            document.getElementById("SigninBtn").disabled = false;
-          } else if (res.response.data.errors[0] === undefined) {
-            alert("입력한 내용을 다시 확인해주세요!");
-            document.getElementById("SigninBtn").disabled = false;
-          } else {
-            alert(
-              res.response.data.errors[0].field +
-                "에 " +
-                res.response.data.errors[0].reason
-            );
-            document.getElementById("SigninBtn").disabled = false;
-          }
-        }
+      ).then((r) => {
+        navigate("/login");
+        alert("회원가입되었습니다!");
       });
     } catch (err) {
-      alert("에러입니다!" + err);
+      console.log("Error >>", err);
+      document.getElementById("SigninBtn").disabled = false;
     }
   };
 

@@ -52,10 +52,11 @@ export const loadUserAxios = () => {
     await apis
       .usercheck()
       .then((info) => {
+        console.log('쩜덴')
         dispatch(userinfo(info));
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err)
         dispatch(logOut());
       });
   };
@@ -79,19 +80,15 @@ export const loginAxios = (id, pw) => {
 // 회원가입 미들웨어
 export const signupAxios = (id, nick, pw, pwcheck) => {
   return async function (dispatch) {
-    let res = null;
     await apis
       .signup(id, nick, pw, pwcheck)
-      .then(() => {
-        res = true;
-      })
+      .then((res) => {})
       .catch((err) => {
         console.log(err);
-        res = err;
       });
-    return res;
   };
 };
+
 
 // reducer
 export default function reducer(state = initialState, action = {}) {
