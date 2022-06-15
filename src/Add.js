@@ -69,7 +69,7 @@ function Add() {
                  return (<div key={i} onClick={() => { setRate(i + 1); }} className="StarPoint" 
                         style={{color: rate < i + 1 ? "#D0C4C5" : "#823B34" }} >★</div>);})}
              </div>
-             <form className="Add_BuylinkText" enctype="multipart/form-data">
+             <form className="Add_BuylinkText" encType="multipart/form-data">
               <input type='file' id='Add_img' accept='img/*' className="Add_Browse"></input>
               <label htmlFor='Add_img' className="Add_textLabel"> 도서 이미지 </label>
              </form>

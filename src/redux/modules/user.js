@@ -66,7 +66,10 @@ export const loadUserAxios = () => {
 // 로그인 미들웨어
 export const loginAxios = (id, pw) => {
   return async function (dispatch) {
-    apis.login(id, pw).catch((err) => {
+
+    apis.login(id, pw)
+    .then(console.log('로그인 되고 말았어'))
+    .catch((err) => {
       console.log(err);
     });
   };
