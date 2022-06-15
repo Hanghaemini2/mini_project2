@@ -79,7 +79,7 @@ export const loginAxios = (id, pw) => {
 export const signupAxios = (id, nick, pw, pwcheck) => {
   return async function (dispatch) {
     apis
-      .login(id, pw)
+      .signup(id, nick, pw, pwcheck)
       .then((res) => {})
       .catch((err) => {
         console.log(err);
