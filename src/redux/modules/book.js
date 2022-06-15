@@ -33,7 +33,7 @@ export function changePage(page) {
 }
 
 export function detailPage(detail) {
-  return { type: PAGE, detail };
+  return { type: DETAIL, detail };
 }
 
 //middlewares
@@ -91,7 +91,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         list: action.book_list,
         post: state.post,
-        currentPage: state.currentPage,
+        currentPage: +state.currentPage,
       };
     }
     case "book/CREATE": {
@@ -99,25 +99,25 @@ export default function reducer(state = initialState, action = {}) {
       return {
         list: new_book_list,
         post: state.post,
-        currentPage: state.currentPage,
+        currentPage: +state.currentPage,
       };
     }
     case "book/PAGE": {
-      return { list: state.list, post: state.post, currentPage: action.page };
+      return { list: state.list, post: state.post, currentPage: +action.page };
     }
     case "book/UPDATE": {
       // const UPDATE = [...state.list, action.book_edit];
       return {
-        list: action.book_edit,
+        list: state.list,
         post: state.post,
-        currentPage: state.currentPage,
+        currentPage: +state.currentPage,
       };
     }
     case "book/DETAIL": {
       return {
         list: state.list,
         post: action.detail,
-        currentPage: state.currentPage,
+        currentPage: +state.currentPage,
       };
     }
 

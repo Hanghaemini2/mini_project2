@@ -22,7 +22,7 @@ function Main() {
   const [modalId, setModalId] = useState(null);
 
   React.useEffect(() => {
-    dispatch(loadBookAxios());
+    dispatch(loadBookAxios(pageViewNum));
   }, [pageViewNum]);
 
   return (
@@ -31,7 +31,6 @@ function Main() {
       {cardLists === undefined
         ? null
         : cardLists.map((list, i) => {
-            console.log(list.id);
             return (
               <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">
@@ -86,7 +85,7 @@ function Main() {
             }}
             style={{ display: pageViewNum < 2 ? "none" : "" }}
           >
-            {pageViewNum - 1}
+            {+pageViewNum - 1}
           </button>
           <button
             className="Page_Number"
@@ -102,10 +101,10 @@ function Main() {
                   : "",
             }}
           >
-            {pageViewNum}{" "}
+            {+pageViewNum}
           </button>
           <button className="Page_Number" style={{ fontWeight: "bold" }}>
-            {pageViewNum + 1}
+            {+pageViewNum + 1}
           </button>
           <button
             className="Page_Number"
@@ -114,7 +113,7 @@ function Main() {
             }}
             style={{ display: totalPages < pageViewNum + 2 ? "none" : "" }}
           >
-            {pageViewNum + 2}
+            {+pageViewNum + 2}
           </button>
           <button
             className="Page_Number"
@@ -123,7 +122,7 @@ function Main() {
             }}
             style={{ display: totalPages < pageViewNum + 3 ? "none" : "" }}
           >
-            {pageViewNum + 3}
+            {+pageViewNum + 3}
           </button>
           <img
             src={next}
