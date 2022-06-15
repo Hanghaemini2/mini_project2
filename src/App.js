@@ -67,6 +67,9 @@ function App() {
               <button className="HeadButton" onClick={() => {navigate(`/add`)}}>
                 게시물 작성
               </button>
+              <button className="HeadButton" onClick={() => {navigate(`/detail`)}}>
+                상세페이지
+              </button>
             </div>
           </div>
           <div className="Divide_wrap">
