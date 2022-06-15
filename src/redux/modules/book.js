@@ -8,11 +8,10 @@ const PAGE = "book/PAGE";
 const UPDATE = "book/UPDATE"
 const DETAIL = "book/DETAIL"
 
-
 // Initial State
 const initialState = {
   list: [],
-  post: null,
+  post: {},
   currentPage: 0,
 };
 
@@ -59,7 +58,7 @@ export const loadDetailAxios = (id) => {
       .bookDetail(id)
       .then((book_data) => {
         dispatch(detailPage(book_data.data));
-        console.log(book_data)
+        console.log(book_data.data)
       })
       .catch((err) => {
         console.log(err);
@@ -75,9 +74,11 @@ export const postBookAxios = (title, body, buyURL, starPoint, image) => {
   };
 };
 
-export const likeAxios = () => {
+export const likeAxios = (id) => {
   return async function (dispatch) {
-    await apis.likeit().catch((err) => {
+    await apis.likeit(id)
+
+    .catch((err) => {
       console.log(err);
     });
   };

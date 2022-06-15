@@ -33,6 +33,7 @@ function Main() {
       {cardLists === undefined
         ? null
         : cardLists.map((list, i) => {
+          console.log(list.id)
             return (
               <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">
@@ -45,11 +46,7 @@ function Main() {
                       <div className="book_detailButton_wrap">
                         <button
                           className="book_detailButton"
-                          onClick={() => {
-                            setModalId(list.id);
-                            setModal(true);
-                          }}
-                        >
+                          onClick={() => {setModalId(list.id); setModal(true)}}>
                           리뷰 상세 보기
                         </button>
                       </div>
