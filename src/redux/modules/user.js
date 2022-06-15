@@ -65,6 +65,18 @@ export const loginAxios = (id, pw) => {
   return async function (dispatch) {
     apis
       .login(id, pw)
+      .then(console.log("로그인 되고 말았어"))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+// 회원가입 미들웨어
+export const signupAxios = (id, nick, pw, pwcheck) => {
+  return async function (dispatch) {
+    apis
+      .login(id, pw)
       .then((res) => {
         setCookie("JWTToken", res.data.token);
         dispatch(login(id));

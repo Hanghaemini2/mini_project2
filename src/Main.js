@@ -37,8 +37,7 @@ function Main() {
               <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">
                   <div className="card_half_Wrap_Top">
-                    <div className="Image_wrap">
-                      <img style={{ width: "160px" }} src={list.bookImageUrl} />
+                    <div className="Image_wrap" style={{backgroundImage: `url(${list.bookImageUrl})`}}>
                     </div>
                     <div className="Text_Wrap">
                       <div className="Text_Title_wrap">{list.title}</div>
