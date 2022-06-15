@@ -5,8 +5,8 @@ import { apis } from "../../shared/api";
 const LOAD = "book/LOAD";
 const CREATE = "book/CREATE";
 const PAGE = "book/PAGE";
-const UPDATE = "book/UPDATE"
-const DETAIL = "book/DETAIL"
+const UPDATE = "book/UPDATE";
+const DETAIL = "book/DETAIL";
 
 // Initial State
 const initialState = {
@@ -35,16 +35,15 @@ export function changePage(page) {
 export function detailPage(detail) {
   return { type: PAGE, detail };
 }
-  
 
 //middlewares
-export const loadBookAxios = () => {
+export const loadBookAxios = (pageViewNum) => {
   return async function (dispatch) {
     await apis
-      .bookreviews()
+      .bookreviews(pageViewNum)
       .then((book_data) => {
         dispatch(loadBook(book_data.data));
-        console.log(book_data)
+        console.log(book_data);
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +57,7 @@ export const loadDetailAxios = (id) => {
       .bookDetail(id)
       .then((book_data) => {
         dispatch(detailPage(book_data.data));
-        console.log(book_data.data)
+        console.log(book_data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -76,11 +75,12 @@ export const postBookAxios = (title, body, buyURL, starPoint, image) => {
 
 export const likeAxios = (id) => {
   return async function (dispatch) {
-    await apis.likeit(id)
+    await apis
+      .likeit(id)
 
-    .catch((err) => {
-      console.log(err);
-    });
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 
@@ -88,23 +88,38 @@ export const likeAxios = (id) => {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case "book/LOAD": {
-      return { list: action.book_list, post: state.post, currentPage: state.currentPage };
+      return {
+        list: action.book_list,
+        post: state.post,
+        currentPage: state.currentPage,
+      };
     }
     case "book/CREATE": {
       const new_book_list = [...state.list, action.post];
-      return { list: new_book_list, post: state.post, currentPage: state.currentPage };
+      return {
+        list: new_book_list,
+        post: state.post,
+        currentPage: state.currentPage,
+      };
     }
     case "book/PAGE": {
       return { list: state.list, post: state.post, currentPage: action.page };
     }
     case "book/UPDATE": {
       // const UPDATE = [...state.list, action.book_edit];
-      return { list: action.book_edit, post: state.post, currentPage: state.currentPage };
+      return {
+        list: action.book_edit,
+        post: state.post,
+        currentPage: state.currentPage,
+      };
     }
     case "book/DETAIL": {
-      return { list: state.list, post: action.detail, currentPage: state.currentPage };
+      return {
+        list: state.list,
+        post: action.detail,
+        currentPage: state.currentPage,
+      };
     }
-
 
     // do reducer stuff
     default:
