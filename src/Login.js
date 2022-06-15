@@ -35,14 +35,11 @@ function Login() {
     }
     document.getElementById("LoginBtn").disabled = true;
     try {
-      // await dispatch(loginAxios());
-      // navigate("/");
-      // alert("로그인되었습니다!");
-      await axios
-        .post("http://15.164.218.19/api/login", {
-          username: usernameRef.current.value,
-          password: passwordRef.current.value,
-        })
+      await dispatch(
+        loginAxios(usernameRef.current.value, passwordRef.current.value)
+      )
+        // navigate("/");
+        // // alert("로그인되었습니다!");
         .then((r) => {
           console.log(r);
         });

@@ -9,7 +9,7 @@ const imgApi = axios.create({
 });
 
 const api = axios.create({
-  baseURL: "http://15.164.218.19/",
+  baseURL: "http://15.164.218.19",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json,",
@@ -19,13 +19,13 @@ const api = axios.create({
 // interruptor (유저의 로그인 정보)
 api.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
-  config.headers.common["JWTToken"] = `${accessToken}`;
+  config.headers.common["Authorization"] = `Bearer ${accessToken}`;
   return config;
 });
 
 imgApi.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
-  config.headers.common["JWTToken"] = `${accessToken}`;
+  config.headers.common["Authorization"] = `Bearer ${accessToken}`;
   return config;
 });
 
@@ -45,9 +45,10 @@ export const apis = {
   bookDetail: (id) => api.get("/bookreview/" + id),
 
   // user
-  login: (id, pw) => api.post("/api/login", { username: id, password: pw }),
+  login: (id, pw) =>
+    api.post("/api/authenticate", { username: id, password: pw }),
   signup: (id, nick, pw, pwcheck) =>
-    api.post("/signup", {
+    api.post("/api/signup", {
       username: id,
       nickname: nick,
       password: pw,
