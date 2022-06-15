@@ -87,6 +87,7 @@ export const signupAxios = (id, nick, pw, pwcheck) => {
   };
 };
 
+
 // reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {

@@ -63,6 +63,7 @@ function Edit() {
               </div>
             </div>
             <div className="EditWrap">
+              <button className="FixButton" onClick={savePost}> 수정 취소 </button>
               <button className="FixButton" onClick={savePost}> 수정 완료 </button>
             </div>
           </div>
