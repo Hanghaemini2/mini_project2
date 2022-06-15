@@ -91,6 +91,7 @@ function App() {
               >
                 게시물 작성
               </button>
+
             </div>
           </div>
           <div className="Divide_wrap">
