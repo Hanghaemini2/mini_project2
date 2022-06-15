@@ -19,13 +19,17 @@ const api = axios.create({
 // interruptor (유저의 로그인 정보)
 api.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
-  config.headers.common["Authorization"] = `Bearer ${accessToken}`;
+  if (accessToken !== undefined) {
+    config.headers.common["Authorization"] = `Bearer ${accessToken}`;
+  }
   return config;
 });
 
 imgApi.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
-  config.headers.common["Authorization"] = `Bearer ${accessToken}`;
+  if (accessToken !== undefined) {
+    config.headers.common["Authorization"] = `Bearer ${accessToken}`;
+  }
   return config;
 });
 
