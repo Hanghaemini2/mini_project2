@@ -26,7 +26,7 @@ export function logOut(userInfo) {
 }
 
 export function userinfo(info) {
-  return { type: LOGOUT, info };
+  return { type: USERINFO, info };
 }
 
 //middlewares
@@ -49,12 +49,14 @@ export function userinfo(info) {
 //토큰 검사 미들웨어
 export const loadUserAxios = () => {
   return async function (dispatch) {
-    apis
+    await apis
       .usercheck()
-      .then(() => {
-        dispatch(userinfo());
+      .then((info) => {
+        console.log('쩜덴')
+        dispatch(userinfo(info));
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         dispatch(logOut());
       });
   };
@@ -63,7 +65,7 @@ export const loadUserAxios = () => {
 // 로그인 미들웨어
 export const loginAxios = (id, pw) => {
   return async function (dispatch) {
-    apis
+    await apis
       .login(id, pw)
       .then((res) => {
         setCookie("JWTToken", res.data.token);
@@ -78,7 +80,7 @@ export const loginAxios = (id, pw) => {
 // 회원가입 미들웨어
 export const signupAxios = (id, nick, pw, pwcheck) => {
   return async function (dispatch) {
-    apis
+    await apis
       .signup(id, nick, pw, pwcheck)
       .then((res) => {})
       .catch((err) => {
