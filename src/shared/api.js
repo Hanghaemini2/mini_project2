@@ -51,7 +51,12 @@ export const apis = {
 
 
   // user
-  login: (id, pw) => api.post("/login", { username: id, password: pw }),
+  login: (id, pw) => api.post("/login", 
+  { 
+    username: id, 
+    password: pw 
+  }),
+  
   signup: (id, nick, pw, pwcheck) =>
     api.post("/signup", {
       username: id,
