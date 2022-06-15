@@ -2,14 +2,14 @@ import axios from "axios";
 
 // axios create (axios 골격)
 const imgApi = axios.create({
-  baseURL: "http://localhost:5001",
+  // baseURL: "http://15.164.218.19",
   headers: {
     "content-type": "multipart/form-data"
   }
 })
 
 const api = axios.create({
-  baseURL: "http://localhost:5001",
+//   baseURL: "http://15.164.218.19/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json,",
@@ -37,7 +37,7 @@ imgApi.interceptors.request.use(function (config) {
 export const apis = {
 
   // article (에이젝스 요청)
-  bookreviews: () => api.get("/bookreviews"),
+  bookreviews: () => api.get("/api/bookreviews"),
   bookpost: (title, body, buyURL, starPoint, image) => imgApi.post("/bookpost", 
     {
       bookBuyUrl: buyURL,
@@ -46,7 +46,7 @@ export const apis = {
       title: title,
       content: body,
     }),
-  likeit: () => api.post("/bookreviews/like"),
+  likeit: () => api.post("/api/bookreviews/like"),
   bookDetail: (id) => api.get("/bookreview/" + id),
 
 
@@ -59,5 +59,5 @@ export const apis = {
       password: pw,
       confirmPassword: pwcheck,
     }),
-  usercheck: () => api.get("/authentication"),
+  usercheck: () => api.get("/api/authentication"),
 };
