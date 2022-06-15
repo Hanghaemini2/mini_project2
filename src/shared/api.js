@@ -49,7 +49,6 @@ export const apis = {
     }),
   likeit: (id) => api.post(`/api/bookreviews/${id}/like`),
   bookDetail: (id) => api.get(`/api/bookreviews/${id}`),
-  deleteCard: (id) => api.delete(`/api/bookreviews/${id}`),
 
   // user
   login: (id, pw) =>
