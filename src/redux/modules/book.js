@@ -7,6 +7,7 @@ const CREATE = "book/CREATE";
 const PAGE = "book/PAGE";
 const UPDATE = "book/UPDATE"
 const DETAIL = "book/DETAIL"
+const DELETE = "book/DELETE"
 
 // Initial State
 const initialState = {
@@ -33,9 +34,12 @@ export function changePage(page) {
 }
 
 export function detailPage(detail) {
-  return { type: PAGE, detail };
+  return { type: DETAIL, detail };
 }
-  
+ 
+export function deleteBook(delbook) {
+  return { type: DELETE, delbook };
+}
 
 //middlewares
 export const loadBookAxios = () => {
@@ -77,7 +81,15 @@ export const postBookAxios = (title, body, buyURL, starPoint, image) => {
 export const likeAxios = (id) => {
   return async function (dispatch) {
     await apis.likeit(id)
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+};
 
+export const deleteAxios = (id) => {
+  return async function (dispatch) {
+    await apis.deleteCard(id)
     .catch((err) => {
       console.log(err);
     });
@@ -98,12 +110,15 @@ export default function reducer(state = initialState, action = {}) {
       return { list: state.list, post: state.post, currentPage: action.page };
     }
     case "book/UPDATE": {
-      // const UPDATE = [...state.list, action.book_edit];
       return { list: action.book_edit, post: state.post, currentPage: state.currentPage };
     }
     case "book/DETAIL": {
       return { list: state.list, post: action.detail, currentPage: state.currentPage };
     }
+    case "book/DELETE": {
+      return { list: state.list, post: action.delbook, currentPage: state.currentPage };
+    }
+
 
 
     // do reducer stuff

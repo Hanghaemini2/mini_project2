@@ -13,7 +13,7 @@ function Main() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const cardInfo = useSelector((state) => state.book.list);
+  // const cardInfo = useSelector((state) => state.book.list);
   const cardLists = useSelector((state) => state.book.list.content);
   const totalPages = useSelector((state) => state.book.list.totalPages);
   const pageViewNum = useSelector((state) => state.book.currentPage);
