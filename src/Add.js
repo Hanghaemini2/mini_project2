@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { loadBookAxios } from "./redux/modules/book";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { postBookAxios } from './redux/modules/book'
-import { loadUser } from './redux/modules/user'
+// import { loadUser } from './redux/modules/user'
 import Star from "./image/star-fill.svg";
 
 
@@ -22,11 +22,11 @@ function Add() {
   const text_URL = React.useRef(null);
 
 
-  React.useEffect(() => {
-    dispatch(loadUser());
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(loadUser());
+  // }, []);
   
-  console.log(loadUser())
+  // console.log(loadUser())
 
     let frm = new FormData();
     let photoFile = document.getElementById('Add_img');
@@ -69,7 +69,7 @@ function Add() {
                  return (<div key={i} onClick={() => { setRate(i + 1); }} className="StarPoint" 
                         style={{color: rate < i + 1 ? "#D0C4C5" : "#823B34" }} >★</div>);})}
              </div>
-             <form className="Add_BuylinkText">
+             <form className="Add_BuylinkText" enctype="multipart/form-data">
               <input type='file' id='Add_img' accept='img/*' className="Add_Browse"></input>
               <label htmlFor='Add_img' className="Add_textLabel"> 도서 이미지 </label>
              </form>

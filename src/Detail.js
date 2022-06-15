@@ -1,7 +1,7 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likeAxios, loadDetailAxios } from "./redux/modules/book";
-import { loadUser } from './redux/modules/user'
+import { loadUserAxios } from './redux/modules/user'
 import { useParams } from 'react-router-dom';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
@@ -25,6 +25,10 @@ function Detail(props) {
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
+  }, []);
+
+  React.useEffect(() => {
+    dispatch(loadUserAxios());
   }, []);
 
   const saveLike = async () => {
