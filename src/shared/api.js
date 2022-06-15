@@ -17,6 +17,8 @@ const api = axios.create({
 });
 
 // interruptor (유저의 로그인 정보)
+// Bearer가 백엔드의 토큰을 검사함
+
 api.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
   if (accessToken !== undefined) {
@@ -51,6 +53,8 @@ export const apis = {
   // user
   login: (id, pw) =>
     api.post("/api/authenticate", { username: id, password: pw }),
+  logout: () =>
+    api.post("/logout", {}),
   signup: (id, nick, pw, pwcheck) =>
     api.post("/api/signup", {
       username: id,

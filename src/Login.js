@@ -78,15 +78,14 @@ function Login() {
                 placeholder="비밀번호를 입력해 주세요"
               />
             </div>
+            <div className="Guide_PW">
+              <span >Tip) 비밀번호는 8자리 이상 입력해 주세요</span>
+            </div>
           </div>
           <span>
             아직 책크잇의 회원이 아니시라면 책크잇의 회원이 되어 보세요.{" "}
-            <b
-              className="LogintoJoin"
-              onClick={() => {
-                navigate(`/signup`);
-              }}
-            >
+            <b className="LogintoJoin" onClick={() => {
+                navigate(`/signup`);}}>
               회원가입 바로 가기
             </b>
           </span>
