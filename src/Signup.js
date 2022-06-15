@@ -45,19 +45,10 @@ function Signup() {
           passwordRef.current.value,
           confirmPasswordRef.current.value
         )
-      )
-        // navigate("/login");
-        // alert("회원가입되었습니다!");
-        // await axios
-        //   .post("http://15.164.218.19/api/signup", {
-        //     username: usernameRef.current.value,
-        //     nickname: nicknameRef.current.value,
-        //     password: passwordRef.current.value,
-        //     confirmPassword: confirmPasswordRef.current.value,
-        //   })
-        .then((r) => {
-          console.log(r);
-        });
+      ).then((r) => {
+        navigate("/login");
+        alert("회원가입되었습니다!");
+      });
     } catch (err) {
       console.log("Error >>", err);
       document.getElementById("SigninBtn").disabled = false;

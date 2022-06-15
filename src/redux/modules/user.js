@@ -5,8 +5,7 @@ import { apis } from "../../shared/api";
 // action
 const LOGIN = "user/LOGIN";
 const LOGOUT = "user/LOGOUT";
-const USERINFO = "user/USERINFO"
-
+const USERINFO = "user/USERINFO";
 
 // initialState
 const initialState = {
@@ -30,8 +29,6 @@ export function userinfo(info) {
   return { type: LOGOUT, info };
 }
 
-
-
 //middlewares
 
 // 유저 정보 미들웨어
@@ -53,34 +50,23 @@ export function userinfo(info) {
 export const loadUserAxios = () => {
   return async function (dispatch) {
     apis
-    .usercheck()
-    .then(() => {
-      dispatch(userinfo())
-    })
-    .catch(() => {
-      dispatch(logOut())
-    })
-  }
-}
+      .usercheck()
+      .then(() => {
+        dispatch(userinfo());
+      })
+      .catch(() => {
+        dispatch(logOut());
+      });
+  };
+};
 
 // 로그인 미들웨어
 export const loginAxios = (id, pw) => {
   return async function (dispatch) {
-
-    apis.login(id, pw)
-    .then(console.log('로그인 되고 말았어'))
-    .catch((err) => {
-      console.log(err);
-    });
-  };
-};
-
-// 회원가입 미들웨어
-export const signupAxios = (id, nick, pw, pwcheck) => {
-  return async function (dispatch) {
     apis
-      .signup(id, nick, pw, pwcheck)
-      .then(() => {
+      .login(id, pw)
+      .then((res) => {
+        setCookie("JWTToken", res.data.token);
         dispatch(login(id));
       })
       .catch((err) => {
@@ -89,6 +75,17 @@ export const signupAxios = (id, nick, pw, pwcheck) => {
   };
 };
 
+// 회원가입 미들웨어
+export const signupAxios = (id, nick, pw, pwcheck) => {
+  return async function (dispatch) {
+    apis
+      .signup(id, nick, pw, pwcheck)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 // reducer
 export default function reducer(state = initialState, action = {}) {
@@ -110,7 +107,7 @@ export default function reducer(state = initialState, action = {}) {
       };
       return { userinfo: newUserInfo };
     }
-    case "user/USERINFO":{
+    case "user/USERINFO": {
       const newUserInfo = {
         username: action.info.principal.user.username,
         nickname: action.info.principal.user.nickname,
