@@ -4,7 +4,6 @@ import { loadUserAxios, logOut } from "./redux/modules/user";
 
 import { useDispatch, useSelector } from "react-redux";
 
-
 import Banner01 from "./image/Banner_01.jpeg";
 import Banner02 from "./image/banner_02.jpeg";
 import Banner03 from "./image/banner_03.jpeg";
@@ -32,14 +31,13 @@ function App() {
 
   const logOutUser = () => {
     dispatch(logOut());
-  }
+  };
 
   React.useEffect(() => {
-    if(loginInfo === false) {
-      dispatch(loadUserAxios())
+    if (loginInfo === false) {
+      dispatch(loadUserAxios());
     }
   }, [1]);
-
 
   return (
     <div className="App">
@@ -57,16 +55,43 @@ function App() {
               </span>
             </div>
             <div className="Button_headWrap">
-              <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>
-                회원가입 </button>
-              |
-              <button className="HeadButton" onClick={() => {navigate(`/login`)}}>
-                로그인 </button>
-              <button className="HeadButton" onClick={() => {logOutUser()}}>
-              로그아웃 </button>
-              <button className="HeadButton" onClick={() => {navigate(`/add`)}}>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/signup`);
+                }}
+                style={{ display: loginInfo ? "none" : "" }}
+              >
+                회원가입{" "}
+              </button>
+              {loginInfo ? "" : "|"}
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/login`);
+                }}
+                style={{ display: loginInfo ? "none" : "" }}
+              >
+                로그인{" "}
+              </button>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  logOutUser();
+                }}
+                style={{ display: !loginInfo ? "none" : "" }}
+              >
+                로그아웃{" "}
+              </button>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/add`);
+                }}
+              >
                 게시물 작성
               </button>
+
             </div>
           </div>
           <div className="Divide_wrap">

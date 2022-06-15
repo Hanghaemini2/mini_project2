@@ -22,10 +22,8 @@ function Main() {
   const [modalId, setModalId] = useState(null);
 
   React.useEffect(() => {
-    dispatch(loadBookAxios());
-  }, []);
-
-
+    dispatch(loadBookAxios(pageViewNum));
+  }, [pageViewNum]);
 
   return (
     <div className="Card_field">
@@ -33,20 +31,25 @@ function Main() {
       {cardLists === undefined
         ? null
         : cardLists.map((list, i) => {
-          console.log(list.id)
             return (
               <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">
                   <div className="card_half_Wrap_Top">
-                    <div className="Image_wrap" style={{backgroundImage: `url(${list.bookImageUrl})`}}>
-                    </div>
+                    <div
+                      className="Image_wrap"
+                      style={{ backgroundImage: `url(${list.bookImageUrl})` }}
+                    ></div>
                     <div className="Text_Wrap">
                       <div className="Text_Title_wrap">{list.title}</div>
                       <div className="TextField">{list.content}</div>
                       <div className="book_detailButton_wrap">
                         <button
                           className="book_detailButton"
-                          onClick={() => {setModalId(list.id); setModal(true)}}>
+                          onClick={() => {
+                            setModalId(list.id);
+                            setModal(true);
+                          }}
+                        >
                           리뷰 상세 보기
                         </button>
                       </div>
@@ -82,7 +85,7 @@ function Main() {
             }}
             style={{ display: pageViewNum < 2 ? "none" : "" }}
           >
-            {pageViewNum - 1}
+            {+pageViewNum - 1}
           </button>
           <button
             className="Page_Number"
@@ -98,10 +101,10 @@ function Main() {
                   : "",
             }}
           >
-            {pageViewNum}{" "}
+            {+pageViewNum}
           </button>
           <button className="Page_Number" style={{ fontWeight: "bold" }}>
-            {pageViewNum + 1}
+            {+pageViewNum + 1}
           </button>
           <button
             className="Page_Number"
@@ -110,7 +113,7 @@ function Main() {
             }}
             style={{ display: totalPages < pageViewNum + 2 ? "none" : "" }}
           >
-            {pageViewNum + 2}
+            {+pageViewNum + 2}
           </button>
           <button
             className="Page_Number"
@@ -119,7 +122,7 @@ function Main() {
             }}
             style={{ display: totalPages < pageViewNum + 3 ? "none" : "" }}
           >
-            {pageViewNum + 3}
+            {+pageViewNum + 3}
           </button>
           <img
             src={next}
