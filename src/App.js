@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { loadUserAxios, logOut } from "./redux/modules/user";
+
+import { useDispatch, useSelector } from "react-redux";
+
 
 import Banner01 from "./image/Banner_01.jpeg";
 import Banner02 from "./image/banner_02.jpeg";
@@ -22,6 +26,20 @@ import NotFound from "./NotFound";
 function App() {
   const navigate = useNavigate();
   const [bannerState, setBannerState] = useState(1);
+  const dispatch = useDispatch();
+
+  const loginInfo = useSelector((state) => state.user.userinfo.is_login);
+
+  const logOutUser = () => {
+    dispatch(logOut());
+  }
+
+  React.useEffect(() => {
+    if(loginInfo === false) {
+      dispatch(loadUserAxios())
+    }
+  }, []);
+
 
   return (
     <div className="App">
@@ -39,29 +57,14 @@ function App() {
               </span>
             </div>
             <div className="Button_headWrap">
-              <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/signup`);
-                }}
-              >
-                회원가입
-              </button>
+              <button className="HeadButton" onClick={() => {navigate(`/signup`)}}>
+                회원가입 </button>
               |
-              <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/login`);
-                }}
-              >
-                로그인
-              </button>
-              <button
-                className="HeadButton"
-                onClick={() => {
-                  navigate(`/add`);
-                }}
-              >
+              <button className="HeadButton" onClick={() => {navigate(`/login`)}}>
+                로그인 </button>
+              <button className="HeadButton" onClick={() => {logOutUser()}}>
+              로그아웃 </button>
+              <button className="HeadButton" onClick={() => {navigate(`/add`)}}>
                 게시물 작성
               </button>
             </div>

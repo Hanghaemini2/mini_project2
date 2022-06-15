@@ -393,6 +393,13 @@
   align-items: center;
 }
 
+.Guide_PW{
+  color: #A2AAAD;
+
+  padding: 10px;
+  width: 530px;
+}
+
 .Login_Label{
   width: 150px;
   margin-right: 15px;
