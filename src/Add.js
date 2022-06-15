@@ -2,50 +2,48 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { loadBookAxios } from "./redux/modules/book";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import { postBookAxios } from './redux/modules/book'
+import { postBookAxios } from "./redux/modules/book";
 // import { loadUser } from './redux/modules/user'
 import Star from "./image/star-fill.svg";
 
-
 function Add() {
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [rate, setRate] = React.useState(0);
 
-  useEffect( ()=>{console.log(rate)} )
+  useEffect(() => {
+    console.log(rate);
+  });
 
   const text_Title = React.useRef(null);
   const text_Body = React.useRef(null);
   // const point_star = React.useRef(null);
   const text_URL = React.useRef(null);
 
-
   // React.useEffect(() => {
   //   dispatch(loadUser());
   // }, []);
-  
+
   // console.log(loadUser())
 
-    let frm = new FormData();
-    let photoFile = document.getElementById('Add_img');
-
+  let frm = new FormData();
+  let photoFile = document.getElementById("Add_img");
 
   const savePost = async () => {
-      frm.append('Add_img', photoFile.files[0])
-      await dispatch(postBookAxios(
+    frm.append("Add_img", photoFile.files[0]);
+    await dispatch(
+      postBookAxios(
         text_Title.current.value,
         text_Body.current.value,
         rate,
         text_URL.current.value,
         frm
-        ))
-        .then(() => {
-          navigate(`/`)
-        })
-  }
-  
+      )
+    ).then(() => {
+      navigate(`/`);
+    });
+  };
 
  return (
    <div>

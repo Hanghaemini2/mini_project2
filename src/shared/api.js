@@ -2,14 +2,14 @@ import axios from "axios";
 
 // axios create (axios 골격)
 const imgApi = axios.create({
-  // baseURL: "http://15.164.218.19",
+  baseURL: "http://15.164.218.19",
   headers: {
-    "content-type": "multipart/form-data"
-  }
-})
+    "content-type": "multipart/form-data",
+  },
+});
 
 const api = axios.create({
-//   baseURL: "http://15.164.218.19/",
+  baseURL: "http://15.164.218.19/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json,",
@@ -23,23 +23,18 @@ api.interceptors.request.use(function (config) {
   return config;
 });
 
-
-
 imgApi.interceptors.request.use(function (config) {
   const accessToken = document.cookie.split("=")[1];
   config.headers.common["JWTToken"] = `${accessToken}`;
   return config;
 });
 
-
-
 // api body
 export const apis = {
-
   // article (에이젝스 요청)
   bookreviews: () => api.get("/api/bookreviews"),
-  bookpost: (title, body, buyURL, starPoint, image) => imgApi.post("/bookpost", 
-    {
+  bookpost: (title, body, buyURL, starPoint, image) =>
+    imgApi.post("/bookpost", {
       bookBuyUrl: buyURL,
       rank: starPoint,
       file: image,
@@ -49,14 +44,9 @@ export const apis = {
   likeit: () => api.post("/api/bookreviews/like"),
   bookDetail: (id) => api.get("/bookreview/" + id),
 
-
   // user
-  login: (id, pw) => api.post("/login", 
-  { 
-    username: id, 
-    password: pw 
-  }),
-  
+  login: (id, pw) => api.post("/api/login", { username: id, password: pw }),
+
   signup: (id, nick, pw, pwcheck) =>
     api.post("/signup", {
       username: id,

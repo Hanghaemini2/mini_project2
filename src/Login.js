@@ -1,16 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./App.css";
 import { loginAxios } from "./redux/modules/user";
 
 import "./App.css";
+import axios from "axios";
 
 function Login() {
   const usernameRef = React.useRef(null);
   const passwordRef = React.useRef(null);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   window.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
@@ -32,9 +35,17 @@ function Login() {
     }
     document.getElementById("LoginBtn").disabled = true;
     try {
-      loginAxios();
-      navigate("/");
-      alert("로그인되었습니다!");
+      // await dispatch(loginAxios());
+      // navigate("/");
+      // alert("로그인되었습니다!");
+      await axios
+        .post("http://15.164.218.19/api/login", {
+          username: usernameRef.current.value,
+          password: passwordRef.current.value,
+        })
+        .then((r) => {
+          console.log(r);
+        });
     } catch (err) {
       console.log("Error >>", err);
       document.getElementById("LoginBtn").disabled = false;

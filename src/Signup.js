@@ -1,6 +1,7 @@
 import React from "react";
 import { signupAxios } from "./redux/modules/user";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function Signup() {
   const usernameRef = React.useRef(null);
@@ -9,6 +10,7 @@ function Signup() {
   const confirmPasswordRef = React.useRef(null);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   window.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
@@ -36,14 +38,26 @@ function Signup() {
     }
     document.getElementById("SigninBtn").disabled = true;
     try {
-      await signupAxios(
-        usernameRef.current.value,
-        nicknameRef.current.value,
-        passwordRef.current.value,
-        confirmPasswordRef.current.value
-      );
-      navigate("/login");
-      alert("회원가입되었습니다!");
+      await dispatch(
+        signupAxios(
+          usernameRef.current.value,
+          nicknameRef.current.value,
+          passwordRef.current.value,
+          confirmPasswordRef.current.value
+        )
+      )
+        // navigate("/login");
+        // alert("회원가입되었습니다!");
+        // await axios
+        //   .post("http://15.164.218.19/api/signup", {
+        //     username: usernameRef.current.value,
+        //     nickname: nicknameRef.current.value,
+        //     password: passwordRef.current.value,
+        //     confirmPassword: confirmPasswordRef.current.value,
+        //   })
+        .then((r) => {
+          console.log(r);
+        });
     } catch (err) {
       console.log("Error >>", err);
       document.getElementById("SigninBtn").disabled = false;
