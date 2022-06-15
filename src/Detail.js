@@ -16,15 +16,13 @@ function Detail(props) {
     props.close(false)
   }
   const loginInfo = useSelector((state) => state.user.userinfo.is_login);
-  const cardLists = useSelector((state) => state.book.list.rank);  
   const postInfo = useSelector((state) => state.book.post);
   // const nameofuser = useSelector((state) => state.user.userinfo.username);
-  
-  console.log(postInfo)
-  console.log(cardLists)
+
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
+    console.log(postInfo)
   }, [1]);
 
   const saveLike = async () => {
@@ -49,25 +47,19 @@ function Detail(props) {
       <div className="Info_allwrap" tabIndex={0} style={{display: postInfo === null ? "none" : ""}}>
         <div className="Info_topWrap">
           <div className="ImageInfo_wrap">
-            <div className="ImageInfo_wrap_Guide"> <img style={{ width: '260px' }} src={Cover01}/> </div>
+            <div className="ImageInfo_wrap_Guide" style={{backgroundImage: `url(${postInfo.bookImageUrl})`}}> </div>
           </div>
           <div className="Info_TitleWrap">
             <img src={Close} className="Xclose" onClick={() => {CloseModal()}}/> 
             <div className="Info_User_Wrap">
-              <div className="Info_user_1"> {}</div>
-              <div className="Info_user_2"> 2022-06-10 </div>
+              <div className="Info_user_1"> {postInfo.nickname}</div>
+              <div className="Info_user_2"> {postInfo.createdDate.split("T")[0]} </div>
               <button className="Info_user_3" id="LikeBtn" onClick={saveLike}><img src={Thumb}/> 추천!!</button>
-              <div className="Info_user_4"> {cardLists} </div>
+              <div className="Info_user_4"> {postInfo.rank} </div>
             </div>
             <div>
-              <div className="Info_Title">원피스 100권</div>
-              <div className="Info_Text">
-                            "주역급이 한데 모인 옥상에서, 카이도 & 빅 맘에게 도전하는 루피 일행.<br />
-                            최강 동맹을 상대로, 이길 방도는 있는 것일까?!
-                            정면승부의 극한에 이른 싸움 끝에 기다리는 미래란?!
-                            오니가시마에서 초격진!! <br />
-                            '원피스'를 둘러싼 해양 모험 로망!!"
-              </div>
+              <div className="Info_Title">{postInfo.title}</div>
+              <div className="Info_Text">{postInfo.content}</div>
             </div>
             <div className="EditWrap">
               <span className="Edit_Body" onClick={() => {navigate(`/edit/:postId`);}}>수정하기 </span>
