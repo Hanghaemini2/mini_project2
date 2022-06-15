@@ -38,9 +38,9 @@ imgApi.interceptors.request.use(function (config) {
 // api body
 export const apis = {
   // article (에이젝스 요청)
-  bookreviews: () => api.get("/api/bookreviews"),
-  bookpost: (title, body, buyURL, starPoint, image) =>
-    imgApi.post("/bookpost", {
+  bookreviews: (pageViewNum) => api.get(`/api/bookreviews?page=${pageViewNum}`),
+  bookpost: (title, body, starPoint, buyURL, image) =>
+    imgApi.post("/api/bookreviews", {
       bookBuyUrl: buyURL,
       rank: starPoint,
       file: image,
@@ -54,8 +54,7 @@ export const apis = {
   // user
   login: (id, pw) =>
     api.post("/api/authenticate", { username: id, password: pw }),
-  logout: () =>
-    api.post("/logout", {}),
+  logout: () => api.post("/logout", {}),
   signup: (id, nick, pw, pwcheck) =>
     api.post("/api/signup", {
       username: id,
