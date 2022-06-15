@@ -7,6 +7,7 @@ const CREATE = "book/CREATE";
 const PAGE = "book/PAGE";
 const UPDATE = "book/UPDATE"
 const DETAIL = "book/DETAIL"
+const DELETE = "book/DELETE"
 
 // Initial State
 const initialState = {
@@ -34,6 +35,10 @@ export function changePage(page) {
 
 export function detailPage(detail) {
   return { type: PAGE, detail };
+}
+
+export function deleteBook(delbook) {
+  return { type: DELETE, delbook };
 }
   
 
@@ -84,6 +89,15 @@ export const likeAxios = (id) => {
   };
 };
 
+export const deleteAxios = (id) => {
+  return async function (dispatch) {
+    await apis.deleteCard(id)
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+};
+
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -103,6 +117,9 @@ export default function reducer(state = initialState, action = {}) {
     }
     case "book/DETAIL": {
       return { list: state.list, post: action.detail, currentPage: state.currentPage };
+    }
+    case "book/DELETE": {
+      return { list: state.list, post: action.delbook, currentPage: state.currentPage };
     }
 
 
