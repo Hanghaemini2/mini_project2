@@ -39,11 +39,10 @@ function Detail(props) {
   }
 
   const delBook = async () => {
+    window.confirm('게시물을 삭제 하시겠습니까? \n삭제 된 데이터는 복구할 수 없습니다.')
     await dispatch(deleteAxios(props.id))
-  }
-
-  const deleteText = () => {
-    if(window.confirm('게시물을 삭제 하시겠습니까? \n 삭제 된 데이터는 복구할 수 없습니다.')){}
+    .then(() => {alert('게시물이 삭제 되었습니다')})
+    .catch(() => {alert('게시물 작성자만 삭제할 수 있습니다')})
   }
 
   return(
