@@ -37,12 +37,17 @@ function Detail(props) {
     window.confirm(
       "게시물을 삭제 하시겠습니까? \n삭제 된 데이터는 복구할 수 없습니다."
     );
-    await dispatch(deleteAxios(props.id))
-      .then(() => {
-        alert("게시물이 삭제 되었습니다");
+    dispatch(deleteAxios(props.id))
+      .then((success) => {
+        if (success === true) {
+          navigate("/")
+          alert("게시물이 삭제 되었습니다");
+        } else {
+          alert("게시물 작성자만 삭제할 수 있습니다");
+        }
       })
       .catch(() => {
-        alert("게시물 작성자만 삭제할 수 있습니다");
+        alert('삭제 도중 에러가 발생했습니다')
       });
   };
 
@@ -76,7 +81,7 @@ function Detail(props) {
             </div>
             <div className="Info_Text">{postInfo.content}</div>
           </div>
-          <div className="EditWrap">
+          <div className="Info_EditWrap">
               <button className="Edit_Body" onClick={() => { navigate("/edit"); }}>
                 게시물 수정 </button>
               <button className="DeleteText" onClick={delBook}>게시물 삭제 </button>

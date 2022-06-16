@@ -49,6 +49,7 @@ export const apis = {
       title: title,
       content: content,
     }),
+  bookDelete: (id) => api.delete(`/api/bookreviews/${id}`),
 
   // user
   login: (id, pw) =>
@@ -62,4 +63,5 @@ export const apis = {
       confirmPassword: pwcheck,
     }),
   usercheck: () => api.get("/api/authentication"),
+
 };

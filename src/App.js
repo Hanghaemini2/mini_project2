@@ -61,7 +61,7 @@ function App() {
                 로그아웃{" "}
               </button>
               <button className="HeadButton" onClick={() => {navigate(`/add`)}}>
-                 게시물 작성
+                 도서리뷰 작성
               </button>
             </div>
           </div>
