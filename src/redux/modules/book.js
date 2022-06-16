@@ -1,4 +1,3 @@
-import produce from "immer";
 import { apis } from "../../shared/api";
 
 // Actions
@@ -90,14 +89,15 @@ export const likeAxios = (id) => {
 export const deleteAxios = (id) => {
   return async function () {
     let success = null;
-    await apis.bookDelete(id)
+    await apis
+      .bookDelete(id)
       .then((del) => {
-        success = true
+        success = true;
       })
       .catch((err) => {
-      console.log(err);
+        console.log(err);
         success = false;
-    });
+      });
     return success;
   };
 };

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likeAxios, loadDetailAxios, deleteAxios } from "./redux/modules/book";
 import { loadUserAxios } from "./redux/modules/user";
 import { useNavigate } from "react-router-dom";
-import ReactDOM from "react-dom";
 
 import Thumb from "./image/hand-thumbs-up.svg";
 import Close from "./image/closeButton.svg";
@@ -31,6 +30,7 @@ function Detail(props) {
     if (postInfo.userLikeStatus === true) {
       await dispatch(likeAxios(props.id));
       document.getElementById("LikeBtn").disabled = true;
+      alert("추천되었습니다!");
     } else if (loginInfo) {
       alert("이미 추천을 누르셨습니다");
     } else {
@@ -45,8 +45,8 @@ function Detail(props) {
     dispatch(deleteAxios(props.id))
       .then((success) => {
         if (success === true) {
-          navigate("/");
           alert("게시물이 삭제 되었습니다");
+          CloseModal();
         } else {
           alert("게시물 작성자만 삭제할 수 있습니다");
         }

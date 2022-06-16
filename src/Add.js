@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { loadBookAxios } from "./redux/modules/book";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { postBookAxios } from "./redux/modules/book";
 
 function Add() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const nicknameInfo = useSelector((state) => state.user.userinfo.nickname);
 
   const [rate, setRate] = React.useState(0);
 
@@ -47,7 +48,7 @@ function Add() {
       <div className="Add_allwrap">
         <span className="PageTitle">게시물 작성</span>
         <span className="Page_guide">
-          반가워요 [유저 네임]님, 오늘은 어떤 책을 소개해 주실까요?
+          반가워요 [{nicknameInfo}]님, 오늘은 어떤 책을 소개해 주실까요?
         </span>
         <div className="Add_topWrap">
           <div className="Add_TitleWrap">

@@ -6,7 +6,6 @@ import "./App.css";
 import { loginAxios } from "./redux/modules/user";
 
 import "./App.css";
-import axios from "axios";
 
 function Login() {
   const usernameRef = React.useRef(null);
