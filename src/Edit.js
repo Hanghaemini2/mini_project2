@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postBookAxios } from "./redux/modules/book";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Edit() {
   const dispatch = useDispatch();
@@ -36,16 +36,8 @@ function Edit() {
       <div className="Info_topWrap">
         <div className="ImageEdit_wrap">
           <div className="ImageEdit_wrap_Guide"> </div>
-          <input
-            type="file"
-            id="Add_img"
-            accept="img/*"
-            className="Add_Browse"
-          ></input>
-          <label htmlFor="Add_img" className="Add_textLabel">
-            {" "}
-            이미지 교체{" "}
-          </label>
+          <input type="file" id="Add_img" accept="img/*" className="Add_Browse"></input>
+          <label htmlFor="Add_img" className="Add_textLabel">이미지 교체</label>
         </div>
         <div className="Edit_TitleWrap">
           <div className="Edit_User_Wrap">
@@ -53,19 +45,11 @@ function Edit() {
             <div className="Info_user_2"> 2022-06-10 </div>
             {Array.from({ length: 5 }, (item, i) => {
               return (
-                <div
-                  key={i}
-                  onClick={() => {
-                    setRate(i + 1);
-                  }}
-                  className="Edit_User4"
-                  style={{ color: rate < i + 1 ? "#E4D5D3" : "#F4DA40" }}
-                >
+                <div key={i} onClick={() => {setRate(i + 1)}}
+                  className="Edit_User4" style={{ color: rate < i + 1 ? "#E4D5D3" : "#F4DA40" }}>
                   ★
                 </div>
-              );
-            })}
-          </div>
+              )})}</div>
           <div>
             <div className="Edit_Title">원피스 100권</div>
             <div className="Info_Text">
@@ -78,14 +62,8 @@ function Edit() {
             </div>
           </div>
           <div className="EditWrap">
-            <button className="FixButton" onClick={savePost}>
-              {" "}
-              수정 취소{" "}
-            </button>
-            <button className="FixButton" onClick={savePost}>
-              {" "}
-              수정 완료{" "}
-            </button>
+            <button className="FixButton" onClick={savePost}>수정 취소</button>
+            <button className="FixButton" onClick={savePost}>수정 완료</button>
           </div>
         </div>
       </div>

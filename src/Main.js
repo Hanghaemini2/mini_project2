@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { loadBookAxios, changePage } from "./redux/modules/book";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Thumb from "./image/hand-thumbs-up.svg";
 import next from "./image/next_button.svg";
@@ -24,8 +24,6 @@ function Main() {
   React.useEffect(() => {
     dispatch(loadBookAxios());
   }, []);
-
-
 
   return (
     <div className="Card_field">
@@ -67,68 +65,33 @@ function Main() {
           })}
       <div className="Bottom_Numbering">
         <div className="page">
-          <img
-            src={prev}
-            className="PageArrow"
-            onClick={() => {
+          <img src={prev} className="PageArrow" onClick={() => {
               dispatch(changePage(Math.max(pageViewNum - 5, 0)));
-            }}
-            style={{ display: pageViewNum < 3 ? "none" : "" }}
-          />
-          <button
-            className="Page_Number"
-            onClick={() => {
-              dispatch(changePage(pageViewNum - 2));
-            }}
-            style={{ display: pageViewNum < 2 ? "none" : "" }}
-          >
+            }} style={{ display: pageViewNum < 3 ? "none" : "" }}/>
+          <button className="Page_Number" onClick={() => {
+              dispatch(changePage(pageViewNum - 2));}} style={{ display: pageViewNum < 2 ? "none" : "" }}>
             {pageViewNum - 1}
           </button>
-          <button
-            className="Page_Number"
-            onClick={() => {
-              dispatch(changePage(pageViewNum - 1));
-            }}
-            style={{
-              display:
-                pageViewNum === 0
+          <button className="Page_Number" onClick={() => {
+              dispatch(changePage(pageViewNum - 1));}} style={{display: pageViewNum === 0 ? "none" : totalPages < pageViewNum
                   ? "none"
-                  : totalPages < pageViewNum
-                  ? "none"
-                  : "",
-            }}
-          >
-            {pageViewNum}{" "}
+                  : "",}}>
+            {pageViewNum}
           </button>
           <button className="Page_Number" style={{ fontWeight: "bold" }}>
             {pageViewNum + 1}
           </button>
-          <button
-            className="Page_Number"
-            onClick={() => {
-              dispatch(changePage(pageViewNum + 1));
-            }}
-            style={{ display: totalPages < pageViewNum + 2 ? "none" : "" }}
-          >
+          <button className="Page_Number" onClick={() => {dispatch(changePage(pageViewNum + 1))}}
+            style={{ display: totalPages < pageViewNum + 2 ? "none" : "" }}>
             {pageViewNum + 2}
           </button>
-          <button
-            className="Page_Number"
-            onClick={() => {
-              dispatch(changePage(pageViewNum + 2));
-            }}
-            style={{ display: totalPages < pageViewNum + 3 ? "none" : "" }}
-          >
+          <button className="Page_Number" onClick={() => {dispatch(changePage(pageViewNum + 2))}}
+            style={{ display: totalPages < pageViewNum + 3 ? "none" : "" }}>
             {pageViewNum + 3}
           </button>
-          <img
-            src={next}
-            className="PageArrow"
-            onClick={() => {
+          <img src={next} className="PageArrow" onClick={() => {
               dispatch(changePage(Math.min(pageViewNum + 5, totalPages - 1)));
-            }}
-            style={{ display: pageViewNum + 4 > totalPages ? "none" : "" }}
-          />
+            }} style={{ display: pageViewNum + 4 > totalPages ? "none" : "" }}/>
         </div>
       </div>
     </div>
