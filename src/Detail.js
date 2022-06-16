@@ -77,7 +77,7 @@ function Detail(props) {
             <div className="Info_Text">{postInfo.content}</div>
           </div>
           <div className="EditWrap">
-              <button className="Edit_Body" onClick={() => { navigate(`/edit/:postId`); }}>
+              <button className="Edit_Body" onClick={() => { navigate("/edit"); }}>
                 게시물 수정 </button>
               <button className="DeleteText" onClick={delBook}>게시물 삭제 </button>
             </div>

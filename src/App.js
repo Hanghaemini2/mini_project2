@@ -96,7 +96,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/add" element={<Add />} />
             <Route path="/detail" element={<Detail />} />
-            <Route path="/edit/:postId" element={<Edit />} />
+            <Route path="/edit" element={<Edit />} />
             <Route path="/mypage/:userId" element={<MyPage />} />
             <Route path="/pleaselogin" element={<PleaseLogin />} />
             <Route path="*" element={<NotFound />} />
