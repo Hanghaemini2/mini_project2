@@ -38,7 +38,7 @@ imgApi.interceptors.request.use(function (config) {
 // api body
 export const apis = {
   // article (에이젝스 요청)
-  bookreviews: (pageViewNum) => api.get(`/api/bookreviews?page=${pageViewNum}`),
+  bookreviews: (pageViewNum) => api.get(`/api/bookreviews?page=${pageViewNum}&size=4`),
   bookpost: (frm) => imgApi.post("/api/bookreviews", frm),
   likeit: (id) => api.post(`/api/bookreviews/${id}/like`),
   bookDetail: (id) => api.get(`/api/bookreviews/${id}`),

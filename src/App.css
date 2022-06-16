@@ -145,7 +145,6 @@
 /* ----------------메인 카드 뭉치------------------- */
 
 
-
 .Card_field {
   display: flex;
   flex-flow: row wrap;
@@ -218,6 +217,9 @@
   align-items: center;
   justify-content: flex-start;
   color: #523f31;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .TextField{
@@ -228,6 +230,8 @@
   margin-bottom: 10px;
   color: #523f31;
   overflow: hidden;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
 }
 
 .book_detailButton{
@@ -887,10 +891,9 @@
   width: 480px;
   display: flex;
   background-color: #653819;
-  /* border: 1px solid black; */
   display: flex;
   border-radius: 10px;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
   margin-top: 10px;
 }
@@ -1055,6 +1058,19 @@
   /* border: 1px solid black; */
 }
 
+.StarWrap{
+  width: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Star_Detail{
+  font-size: 16px;
+  margin-right: 2px;
+}
+
 .Xclose{
   margin-bottom:10px;
   cursor: pointer;
@@ -1212,6 +1228,11 @@
   animation-fill-mode: forwards;
   }
 
+  a{
+    text-decoration: none;
+    color: #A2AAAD;
+  }
+
 @keyframes slide {
   0% {
     transform: translateX(-2%);
@@ -1269,14 +1290,8 @@
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
 
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 @font-face {

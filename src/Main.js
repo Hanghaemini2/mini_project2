@@ -21,9 +21,13 @@ function Main() {
   const [modal, setModal] = useState(false);
   const [modalId, setModalId] = useState(null);
 
-  React.useEffect(() => {
-    dispatch(loadBookAxios(pageViewNum));
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(loadBookAxios(pageViewNum));
+  // }, []);
+
+  React.useEffect(() => { 
+    dispatch(loadBookAxios(pageViewNum)); 
+  }, [pageViewNum]);
 
   return (
     <div className="Card_field">
