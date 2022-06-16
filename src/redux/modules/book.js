@@ -42,10 +42,10 @@ export function deleteBook(delbook) {
 }
 
 //middlewares
-export const loadBookAxios = () => {
+export const loadBookAxios = (pageViewNum) => {
   return async function (dispatch) {
     await apis
-      .bookreviews()
+      .bookreviews(pageViewNum)
       .then((book_data) => {
         dispatch(loadBook(book_data.data));
       })

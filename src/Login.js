@@ -16,7 +16,9 @@ function Login() {
   const dispatch = useDispatch();
 
   window.addEventListener("keyup", (e) => {
-    if (e.key === "Enter") {loginFunction()}
+    if (e.key === "Enter") {
+      loginFunction();
+    }
   });
 
   const loginFunction = async () => {
@@ -40,6 +42,8 @@ function Login() {
         if (success === true) {
           navigate("/");
           alert("로그인되었습니다!");
+        } else {
+          document.getElementById("LoginBtn").disabled = false;
         }
       });
     } catch (err) {
@@ -61,13 +65,21 @@ function Login() {
           <div className="Login_inputWrap">
             <div className="ID_Wrap">
               <label className="Login_Label">ID</label>
-              <input className="Login_Input" ref={usernameRef} placeholder="ID를 입력해 주세요"/>
+              <input
+                className="Login_Input"
+                ref={usernameRef}
+                placeholder="ID를 입력해 주세요"
+              />
             </div>
             <br />
             <div className="PW_Wrap">
               <span className="Login_Label">PW</span>
-              <input ref={passwordRef} className="Login_Input" type="password"
-                placeholder="비밀번호를 입력해 주세요"/>
+              <input
+                ref={passwordRef}
+                className="Login_Input"
+                type="password"
+                placeholder="비밀번호를 입력해 주세요"
+              />
             </div>
             <div className="Guide_PW">
               <span>Tip) 비밀번호는 8자리 이상 입력해 주세요</span>

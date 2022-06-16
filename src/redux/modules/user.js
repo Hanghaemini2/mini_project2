@@ -119,8 +119,8 @@ export default function reducer(state = initialState, action = {}) {
     }
     case "user/USERINFO": {
       const newUserInfo = {
-        username: action.info.principal.user.username,
-        nickname: action.info.principal.user.nickname,
+        username: action.info.data.principal.user.username,
+        nickname: action.info.data.principal.user.nickname,
         is_login: true,
       };
       return { userinfo: newUserInfo };

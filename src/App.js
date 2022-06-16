@@ -45,23 +45,53 @@ function App() {
         <div className="Wrap">
           <div className="HeadHeader">
             <div className="HomeWrap">
-              <span className="LOGONAME" onClick={() => {navigate(`/`);}}>
+              <span
+                className="LOGONAME"
+                onClick={() => {
+                  navigate(`/`);
+                }}
+              >
                 <i>책크잇!!</i>
               </span>
             </div>
             <div className="Button_headWrap">
-              <button className="HeadButton" onClick={() => {navigate(`/signup`);}} style={{ display: loginInfo ? "none" : "" }}>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/signup`);
+                }}
+                style={{ display: loginInfo ? "none" : "" }}
+              >
                 회원가입{" "}
               </button>
               {loginInfo ? "" : "|"}
-              <button className="HeadButton" onClick={() => {navigate(`/login`);}} style={{ display: loginInfo ? "none" : "" }}>
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/login`);
+                }}
+                style={{ display: loginInfo ? "none" : "" }}
+              >
                 로그인{" "}
               </button>
-              <button className="HeadButton" onClick={() => {logOutUser();}} style={{ display: !loginInfo ? "none" : "" }}>
-                로그아웃{" "}
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  logOutUser();
+                }}
+                style={{ display: !loginInfo ? "none" : "" }}
+              >
+                로그아웃
               </button>
-              <button className="HeadButton" onClick={() => {navigate(`/add`)}}>
-                 도서리뷰 작성
+              {loginInfo ? "|" : ""}
+              <button
+                className="HeadButton"
+                onClick={() => {
+                  navigate(`/add`);
+                }}
+                style={{ display: !loginInfo ? "none" : "" }}
+              >
+                게시물 작성
               </button>
             </div>
           </div>
@@ -72,21 +102,43 @@ function App() {
           </div>
           <div className="HeadBody">
             <div className="LeftArrow">
-              <img src={LeftArrow} onClick={() => {setBannerState(bannerState === 3 ? 1 : bannerState + 1);}}/>
+              <img
+                src={LeftArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 3 ? 1 : bannerState + 1);
+                }}
+              />
             </div>
             <div className="BannerWrap">
               <div className="Center_image">
-                <img src={Banner01} className="ImgAnimation" style={{ display: bannerState === 1 ? "" : "none" }}/>
+                <img
+                  src={Banner01}
+                  className="ImgAnimation"
+                  style={{ display: bannerState === 1 ? "" : "none" }}
+                />
               </div>
               <div className="Center_image">
-                <img src={Banner02} className="ImgAnimation" style={{ display: bannerState === 2 ? "" : "none" }}/>
+                <img
+                  src={Banner02}
+                  className="ImgAnimation"
+                  style={{ display: bannerState === 2 ? "" : "none" }}
+                />
               </div>
               <div className="Center_image">
-                <img src={Banner03} className="ImgAnimation" style={{ display: bannerState === 3 ? "" : "none" }}/>
+                <img
+                  src={Banner03}
+                  className="ImgAnimation"
+                  style={{ display: bannerState === 3 ? "" : "none" }}
+                />
               </div>
             </div>
             <div className="RightArrow">
-              <img src={RightArrow} onClick={() => {setBannerState(bannerState === 1 ? 3 : bannerState - 1)}}/>
+              <img
+                src={RightArrow}
+                onClick={() => {
+                  setBannerState(bannerState === 1 ? 3 : bannerState - 1);
+                }}
+              />
             </div>
           </div>
           <div className="HeadFooter"></div>
