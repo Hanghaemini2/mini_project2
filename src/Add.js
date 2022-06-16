@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { postBookAxios } from "./redux/modules/book";
+import { postBookAxios, changePage } from "./redux/modules/book";
 
 function Add() {
   const dispatch = useDispatch();
