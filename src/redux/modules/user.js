@@ -56,7 +56,7 @@ export const loadUserAxios = () => {
       })
       .catch((err) => {
         console.log(err);
-        dispatch(logOut());
+        // dispatch(logOut());
       });
   };
 };

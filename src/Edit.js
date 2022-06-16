@@ -10,7 +10,7 @@ function Edit() {
 
   const text_Title = React.useRef(null);
   const text_Body = React.useRef(null);
-  const text_URL = React.useRef(null);
+  const bookBuyUrl = React.useRef(null);
 
   const postInfo = useSelector((state) => state.book.post);
   const [rate, setRate] = React.useState(postInfo.rank);
@@ -26,7 +26,7 @@ function Edit() {
         text_Title.current.value,
         text_Body.current.value,
         rate,
-        postInfo.bookBuyUrl
+        bookBuyUrl.current.value
       )
     ).then(() => {
       navigate(`/`);
@@ -39,7 +39,6 @@ function Edit() {
         <div className="ImageEdit_wrap">
           <div className="ImageEdit_wrap_Guide" style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}> </div>
           <input type="file" id="Add_img" accept="img/*" className="Add_Browse"></input>
-          <label htmlFor="Add_img" className="Add_textLabel">이미지 교체</label>
         </div>
         <div className="Edit_TitleWrap">
           <div className="Edit_User_Wrap">
@@ -57,22 +56,17 @@ function Edit() {
                 </div>
               )})}</div>
           <div>
-            <input
-              className="Edit_Title"
-              defaultValue={postInfo.title}
-              ref={text_Title}
-            />
-            <textarea
-              className="Info_Text"
-              defaultValue={postInfo.content}
-              ref={text_Body}
-            />
+            <div className="Edit_BodyWrap">
+              <input className="Edit_Title" defaultValue={postInfo.title} ref={text_Title}/>
+              <textarea className="Edit_Text" defaultValue={postInfo.content} ref={text_Body}/>
+            </div>
+            <div className="LinkWrap">
+              <div className="Link_Bar"><span>도서 구매 링크</span></div>
+              <input className="Link_Edit" defaultValue={postInfo.bookBuyUrl} ref={bookBuyUrl}></input>
+            </div>
           </div>
           <div className="EditWrap">
-            <button className="FixButton" onClick={() => {
-                navigate("/");
-              }}
-              >수정 취소</button>
+            <button className="FixButton" onClick={() => {navigate("/")}}>수정 취소</button>
             <button className="FixButton" onClick={editPost}>수정 완료</button>
           </div>
         </div>

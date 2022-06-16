@@ -88,10 +88,17 @@ export const likeAxios = (id) => {
 };
 
 export const deleteAxios = (id) => {
-  return async function (dispatch) {
-    await apis.deleteCard(id).catch((err) => {
+  return async function () {
+    let success = null;
+    await apis.bookDelete(id)
+      .then((del) => {
+        success = true
+      })
+      .catch((err) => {
       console.log(err);
+        success = false;
     });
+    return success;
   };
 };
 
