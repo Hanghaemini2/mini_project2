@@ -93,7 +93,7 @@ function Detail(props) {
             <span
               className="Edit_Body"
               onClick={() => {
-                navigate(`/edit/:postId`);
+                navigate("/edit");
               }}
             >
               수정하기{" "}

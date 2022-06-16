@@ -39,16 +39,16 @@ imgApi.interceptors.request.use(function (config) {
 export const apis = {
   // article (에이젝스 요청)
   bookreviews: () => api.get("/api/bookreviews"),
-  bookpost: (title, body, starPoint, buyURL, image) =>
-    imgApi.post("/api/bookreview", {
-      bookBuyUrl: buyURL,
-      rank: starPoint,
-      file: image,
-      title: title,
-      content: body,
-    }),
+  bookpost: (frm) => imgApi.post("/api/bookreviews", frm),
   likeit: (id) => api.post(`/api/bookreviews/${id}/like`),
   bookDetail: (id) => api.get(`/api/bookreviews/${id}`),
+  editBook: (id, title, content, rate, url) =>
+    api.patch(`/api/bookreviews/${id}`, {
+      bookBuyUrl: url,
+      rank: rate,
+      title: title,
+      content: content,
+    }),
 
   // user
   login: (id, pw) =>

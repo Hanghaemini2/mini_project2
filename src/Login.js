@@ -37,12 +37,13 @@ function Login() {
     try {
       await dispatch(
         loginAxios(usernameRef.current.value, passwordRef.current.value)
-      )
-        // navigate("/");
-        // // alert("로그인되었습니다!");
-        .then((r) => {
-          console.log(r);
-        });
+      ).then((success) => {
+        console.log(success);
+        if (success === true) {
+          navigate("/");
+          alert("로그인되었습니다!");
+        }
+      });
     } catch (err) {
       console.log("Error >>", err);
       document.getElementById("LoginBtn").disabled = false;
@@ -79,13 +80,17 @@ function Login() {
               />
             </div>
             <div className="Guide_PW">
-              <span >Tip) 비밀번호는 8자리 이상 입력해 주세요</span>
+              <span>Tip) 비밀번호는 8자리 이상 입력해 주세요</span>
             </div>
           </div>
           <span>
             아직 책크잇의 회원이 아니시라면 책크잇의 회원이 되어 보세요.{" "}
-            <b className="LogintoJoin" onClick={() => {
-                navigate(`/signup`);}}>
+            <b
+              className="LogintoJoin"
+              onClick={() => {
+                navigate(`/signup`);
+              }}
+            >
               회원가입 바로 가기
             </b>
           </span>

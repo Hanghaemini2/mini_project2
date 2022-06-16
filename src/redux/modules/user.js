@@ -64,15 +64,19 @@ export const loadUserAxios = () => {
 // 로그인 미들웨어
 export const loginAxios = (id, pw) => {
   return async function (dispatch) {
+    let success = null;
     await apis
       .login(id, pw)
       .then((res) => {
         setCookie("JWTToken", res.data.token);
         dispatch(login(id));
+        success = true;
       })
       .catch((err) => {
-        console.log(err);
+        success = false;
+        alert("아이디와 패스워드를 확인해주세요!");
       });
+    return success;
   };
 };
 
