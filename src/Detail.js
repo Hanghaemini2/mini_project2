@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likeAxios, loadDetailAxios, deleteAxios } from "./redux/modules/book";
+import { loadUserAxios } from "./redux/modules/user";
 import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 
@@ -16,6 +17,11 @@ function Detail(props) {
   };
   const loginInfo = useSelector((state) => state.user.userinfo.is_login);
   const postInfo = useSelector((state) => state.book.post);
+  const loginUserNick = useSelector((state) => state.user.userinfo.nickname);
+
+  React.useEffect(() => {
+    dispatch(loadUserAxios());
+  }, [1]);
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
@@ -46,18 +52,29 @@ function Detail(props) {
       });
   };
 
-  const starRank = postInfo.rank
+  const starRank = postInfo.rank;
 
   return (
-    <div className="Info_allwrap" tabIndex={0} style={{ display: postInfo === null ? "none" : "" }}>
+    <div
+      className="Info_allwrap"
+      tabIndex={0}
+      style={{ display: postInfo === null ? "none" : "" }}
+    >
       <div className="Info_topWrap">
         <div className="ImageInfo_wrap">
-          <div className="ImageInfo_wrap_Guide"
-            style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}>
-          </div>
+          <div
+            className="ImageInfo_wrap_Guide"
+            style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}
+          ></div>
         </div>
         <div className="Info_TitleWrap">
-          <img src={Close} className="Xclose" onClick={() => {CloseModal();}}/>
+          <img
+            src={Close}
+            className="Xclose"
+            onClick={() => {
+              CloseModal();
+            }}
+          />
           <div className="Info_User_Wrap">
             <div className="Info_user_1"> {postInfo.nickname}</div>
             <div className="Info_user_2">
@@ -72,19 +89,36 @@ function Detail(props) {
           </div>
           <div>
             <div className="Info_Title_wrap">
-            <div className="Info_Title">{postInfo.title}</div>
+              <div className="Info_Title">{postInfo.title}</div>
             </div>
             <div className="Info_Text">{postInfo.content}</div>
           </div>
-          <div className="EditWrap">
-              <button className="Edit_Body" onClick={() => { navigate("/edit"); }}>
-                게시물 수정 </button>
-              <button className="DeleteText" onClick={delBook}>게시물 삭제 </button>
+          <div
+            className="EditWrap"
+            style={{
+              display: loginUserNick === postInfo.nickname ? "" : "none",
+            }}
+          >
+            <button
+              className="Edit_Body"
+              onClick={() => {
+                navigate("/edit");
+              }}
+            >
+              게시물 수정{" "}
+            </button>
+            <button className="DeleteText" onClick={delBook}>
+              게시물 삭제{" "}
+            </button>
+          </div>
+          <div className="LinkWrap">
+            <div className="Link_Bar">
+              <span>도서 구매 링크</span>
             </div>
-            <div className="LinkWrap">
-              <div className="Link_Bar"><span>도서 구매 링크</span></div>
-              <div className="Link_Text"><a>{postInfo.bookBuyUrl}</a></div>
+            <div className="Link_Text">
+              <a href={postInfo.bookBuyUrl}>{postInfo.bookBuyUrl}</a>
             </div>
+          </div>
         </div>
       </div>
     </div>
