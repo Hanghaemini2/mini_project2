@@ -25,28 +25,31 @@ function Main() {
     dispatch(loadBookAxios());
   }, []);
 
-
-
   return (
     <div className="Card_field">
       {modal === true ? <Detail close={setModal} id={modalId} /> : null}
       {cardLists === undefined
         ? null
         : cardLists.map((list, i) => {
-          console.log(list.id)
             return (
               <div className="Card_TopwithBottom" key={list.id}>
                 <div className="Card_allWrap">
                   <div className="card_half_Wrap_Top">
-                    <div className="Image_wrap" style={{backgroundImage: `url(${list.bookImageUrl})`}}>
-                    </div>
+                    <div
+                      className="Image_wrap"
+                      style={{ backgroundImage: `url(${list.bookImageUrl})` }}
+                    ></div>
                     <div className="Text_Wrap">
                       <div className="Text_Title_wrap">{list.title}</div>
                       <div className="TextField">{list.content}</div>
                       <div className="book_detailButton_wrap">
                         <button
                           className="book_detailButton"
-                          onClick={() => {setModalId(list.id); setModal(true)}}>
+                          onClick={() => {
+                            setModalId(list.id);
+                            setModal(true);
+                          }}
+                        >
                           리뷰 상세 보기
                         </button>
                       </div>

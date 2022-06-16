@@ -48,7 +48,6 @@ export const loadBookAxios = () => {
       .bookreviews()
       .then((book_data) => {
         dispatch(loadBook(book_data.data));
-        console.log(book_data);
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +61,6 @@ export const loadDetailAxios = (id) => {
       .bookDetail(id)
       .then((book_data) => {
         dispatch(detailPage(book_data.data));
-        console.log(book_data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -70,10 +68,10 @@ export const loadDetailAxios = (id) => {
   };
 };
 
-export const postBookAxios = (title, body, buyURL, starPoint, image) => {
+export const postBookAxios = (frm) => {
   return async function (dispatch) {
-    await apis.bookpost(title, body, buyURL, starPoint, image).catch((err) => {
-      console.log(err);
+    await apis.bookpost(frm).catch((err) => {
+      alert("로그인을 해주세요!");
     });
   };
 };
@@ -99,6 +97,7 @@ export const deleteAxios = (id) => {
 
 export const editBookAxios = (id, title, content, rate, url) => {
   return async function (dispatch) {
+    console.log(content);
     await apis
       .editBook(id, title, content, rate, url)
       .then((res) => {})
