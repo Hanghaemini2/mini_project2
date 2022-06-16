@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { likeAxios, loadDetailAxios, deleteAxios } from "./redux/modules/book";
-import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 
 import Thumb from "./image/hand-thumbs-up.svg";
-import Cover01 from "./image/book_sample.jpeg";
 import Close from "./image/closeButton.svg";
 
 function Detail(props) {
@@ -17,12 +16,10 @@ function Detail(props) {
   };
   const loginInfo = useSelector((state) => state.user.userinfo.is_login);
   const postInfo = useSelector((state) => state.book.post);
-  // const nameofuser = useSelector((state) => state.user.userinfo.username);
-
-  console.log(postInfo.rank);
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
+    console.log(postInfo.rank);
   }, [1]);
 
   const saveLike = async () => {
@@ -49,33 +46,21 @@ function Detail(props) {
       });
   };
 
+  const starRank = postInfo.rank
+
   return (
-    <div
-      className="Info_allwrap"
-      tabIndex={0}
-      style={{ display: postInfo === null ? "none" : "" }}
-    >
+    <div className="Info_allwrap" tabIndex={0} style={{ display: postInfo === null ? "none" : "" }}>
       <div className="Info_topWrap">
         <div className="ImageInfo_wrap">
-          <div
-            className="ImageInfo_wrap_Guide"
-            style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}
-          >
-            {" "}
+          <div className="ImageInfo_wrap_Guide"
+            style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}>
           </div>
         </div>
         <div className="Info_TitleWrap">
-          <img
-            src={Close}
-            className="Xclose"
-            onClick={() => {
-              CloseModal();
-            }}
-          />
+          <img src={Close} className="Xclose" onClick={() => {CloseModal();}}/>
           <div className="Info_User_Wrap">
             <div className="Info_user_1"> {postInfo.nickname}</div>
             <div className="Info_user_2">
-              {" "}
               {postInfo.createdDate === undefined
                 ? ""
                 : postInfo.createdDate.split("T")[0]}{" "}
@@ -83,41 +68,25 @@ function Detail(props) {
             <button className="Info_user_3" id="LikeBtn" onClick={saveLike}>
               <img src={Thumb} /> 추천!!
             </button>
-            <div className="Info_user_4"> {postInfo.rank} </div>
+            <div className="Info_user_4"> {starRank} </div>
           </div>
           <div>
+            <div className="Info_Title_wrap">
             <div className="Info_Title">{postInfo.title}</div>
+            </div>
             <div className="Info_Text">{postInfo.content}</div>
           </div>
           <div className="EditWrap">
-            <span
-              className="Edit_Body"
-              onClick={() => {
-                navigate("/edit");
-              }}
-            >
-              수정하기{" "}
-            </span>
-            <span>| </span>
-            <span className="DeleteText" onClick={delBook}>
-              삭제하기{" "}
-            </span>
-          </div>
+              <button className="Edit_Body" onClick={() => { navigate("/edit"); }}>
+                게시물 수정 </button>
+              <button className="DeleteText" onClick={delBook}>게시물 삭제 </button>
+            </div>
+            <div className="LinkWrap">
+              <div className="Link_Bar"><span>도서 구매 링크</span></div>
+              <div className="Link_Text"><a>{postInfo.bookBuyUrl}</a></div>
+            </div>
         </div>
       </div>
-      {/* <div className="Info_bottomWrap">
-            <ul>댓글 
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-              <li>르탄이 | 벌써 100권이나 나왔네요</li>
-            </ul>
-        </div> */}
     </div>
   );
 }

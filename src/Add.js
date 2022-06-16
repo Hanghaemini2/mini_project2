@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import { loadBookAxios } from "./redux/modules/book";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { postBookAxios } from "./redux/modules/book";
-// import { loadUser } from './redux/modules/user'
-import Star from "./image/star-fill.svg";
 
 function Add() {
   const dispatch = useDispatch();
@@ -18,14 +16,7 @@ function Add() {
 
   const text_Title = React.useRef(null);
   const text_Body = React.useRef(null);
-  // const point_star = React.useRef(null);
   const text_URL = React.useRef(null);
-
-  // React.useEffect(() => {
-  //   dispatch(loadUser());
-  // }, []);
-
-  // console.log(loadUser())
 
   let frm = new FormData();
   let photoFile = document.getElementById("Add_img");

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editBookAxios } from "./redux/modules/book";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+
 
 function Edit() {
   const dispatch = useDispatch();
@@ -36,12 +37,9 @@ function Edit() {
     <div className="Info_allwrap" tabIndex={0}>
       <div className="Info_topWrap">
         <div className="ImageEdit_wrap">
-          <div
-            className="ImageInfo_wrap_Guide"
-            style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}
-          >
-            {" "}
-          </div>
+          <div className="ImageEdit_wrap_Guide" style={{ backgroundImage: `url(${postInfo.bookImageUrl})` }}> </div>
+          <input type="file" id="Add_img" accept="img/*" className="Add_Browse"></input>
+          <label htmlFor="Add_img" className="Add_textLabel">이미지 교체</label>
         </div>
         <div className="Edit_TitleWrap">
           <div className="Edit_User_Wrap">
@@ -53,19 +51,11 @@ function Edit() {
             </div>
             {Array.from({ length: 5 }, (item, i) => {
               return (
-                <div
-                  key={i}
-                  onClick={() => {
-                    setRate(i + 1);
-                  }}
-                  className="Edit_User4"
-                  style={{ color: rate < i + 1 ? "#E4D5D3" : "#F4DA40" }}
-                >
+                <div key={i} onClick={() => {setRate(i + 1)}}
+                  className="Edit_User4" style={{ color: rate < i + 1 ? "#E4D5D3" : "#F4DA40" }}>
                   ★
                 </div>
-              );
-            })}
-          </div>
+              )})}</div>
           <div>
             <input
               className="Edit_Title"
@@ -79,19 +69,11 @@ function Edit() {
             />
           </div>
           <div className="EditWrap">
-            <button
-              className="FixButton"
-              onClick={() => {
+            <button className="FixButton" onClick={() => {
                 navigate("/");
               }}
-            >
-              {" "}
-              수정 취소{" "}
-            </button>
-            <button className="FixButton" onClick={editPost}>
-              {" "}
-              수정 완료{" "}
-            </button>
+              >수정 취소</button>
+            <button className="FixButton" onClick={editPost}>수정 완료</button>
           </div>
         </div>
       </div>
