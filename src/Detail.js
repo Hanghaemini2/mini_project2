@@ -25,10 +25,7 @@ function Detail(props) {
 
   React.useEffect(() => {
     dispatch(loadDetailAxios(props.id));
-    console.log(postInfo.rank);
   }, [1]);
-
-  const [rate, setRate] = React.useState(postInfo.rank);
 
   const saveLike = async () => {
     if (postInfo.userLikeStatus === true) {
@@ -48,18 +45,16 @@ function Detail(props) {
     dispatch(deleteAxios(props.id))
       .then((success) => {
         if (success === true) {
-          navigate("/")
+          navigate("/");
           alert("게시물이 삭제 되었습니다");
         } else {
           alert("게시물 작성자만 삭제할 수 있습니다");
         }
       })
       .catch(() => {
-        alert('삭제 도중 에러가 발생했습니다')
+        alert("삭제 도중 에러가 발생했습니다");
       });
   };
-
-  
 
   return (
     <div
@@ -92,13 +87,23 @@ function Detail(props) {
             <button className="Info_user_3" id="LikeBtn" onClick={saveLike}>
               <img src={Thumb} /> 추천!!
             </button>
-            <div className="Info_user_4"> 
-            <div className="StarWrap">{Array.from({ length: 5 }, (item, i) => {return (
-              <div key={i} className="Star_Detail"
-                        style={{ color: rate < i + 1 ? "#D9D9D6" : "#F2A900" }}>
-                        ★ </div>)})}
+            <div className="Info_user_4">
+              <div className="StarWrap">
+                {Array.from({ length: 5 }, (item, i) => {
+                  return (
+                    <div
+                      key={i}
+                      className="Star_Detail"
+                      style={{
+                        color: postInfo.rank < i + 1 ? "#D9D9D6" : "#F2A900",
+                      }}
+                    >
+                      ★{" "}
+                    </div>
+                  );
+                })}
               </div>
-             </div>
+            </div>
           </div>
           <div>
             <div className="Info_Title_wrap">
@@ -108,8 +113,16 @@ function Detail(props) {
           </div>
           <div
             className="EditWrap"
-            style={{ display: loginUserNick === postInfo.nickname ? "" : "none"}}>
-            <button className="Edit_Body" onClick={() => {navigate("/edit")}}>
+            style={{
+              display: loginUserNick === postInfo.nickname ? "" : "none",
+            }}
+          >
+            <button
+              className="Edit_Body"
+              onClick={() => {
+                navigate("/edit");
+              }}
+            >
               게시물 수정
             </button>
             <button className="DeleteText" onClick={delBook}>
