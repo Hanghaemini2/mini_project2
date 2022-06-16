@@ -39,6 +39,7 @@ function Add() {
     frm.append("title", text_Title.current.value);
     frm.append("content", text_Body.current.value);
     await dispatch(postBookAxios(frm)).then(() => {
+      dispatch(changePage(0));
       navigate(`/`);
     });
   };
