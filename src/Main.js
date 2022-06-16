@@ -23,7 +23,7 @@ function Main() {
 
   React.useEffect(() => {
     dispatch(loadBookAxios(pageViewNum));
-  }, []);
+  }, [pageViewNum]);
 
   return (
     <div className="Card_field">
