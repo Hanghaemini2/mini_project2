@@ -28,6 +28,8 @@ function Detail(props) {
     console.log(postInfo.rank);
   }, [1]);
 
+  const [rate, setRate] = React.useState(postInfo.rank);
+
   const saveLike = async () => {
     if (postInfo.userLikeStatus === true) {
       await dispatch(likeAxios(props.id));
@@ -57,7 +59,7 @@ function Detail(props) {
       });
   };
 
-  const starRank = postInfo.rank;
+  
 
   return (
     <div
@@ -90,7 +92,13 @@ function Detail(props) {
             <button className="Info_user_3" id="LikeBtn" onClick={saveLike}>
               <img src={Thumb} /> 추천!!
             </button>
-            <div className="Info_user_4"> {starRank} </div>
+            <div className="Info_user_4"> 
+            <div className="StarWrap">{Array.from({ length: 5 }, (item, i) => {return (
+              <div key={i} className="Star_Detail"
+                        style={{ color: rate < i + 1 ? "#D9D9D6" : "#F2A900" }}>
+                        ★ </div>)})}
+              </div>
+             </div>
           </div>
           <div>
             <div className="Info_Title_wrap">
@@ -100,20 +108,12 @@ function Detail(props) {
           </div>
           <div
             className="EditWrap"
-            style={{
-              display: loginUserNick === postInfo.nickname ? "" : "none",
-            }}
-          >
-            <button
-              className="Edit_Body"
-              onClick={() => {
-                navigate("/edit");
-              }}
-            >
-              게시물 수정{" "}
+            style={{ display: loginUserNick === postInfo.nickname ? "" : "none"}}>
+            <button className="Edit_Body" onClick={() => {navigate("/edit")}}>
+              게시물 수정
             </button>
             <button className="DeleteText" onClick={delBook}>
-              게시물 삭제{" "}
+              게시물 삭제
             </button>
           </div>
           <div className="LinkWrap">
