@@ -92,48 +92,29 @@ function Signup() {
             <div className="Join_inputWrap">
               <div className="ID_JoinWrap">
                 <label className="Join_Label">ID</label>
-                <input
-                  className="Join_Input"
-                  ref={usernameRef}
-                  placeholder="ID를 입력해 주세요"
-                />
+                <input className="Join_Input" ref={usernameRef} placeholder="ID를 입력해 주세요"/>
               </div>
               <br />
               <div className="PW_JoinWrap">
                 <span className="Join_Label">닉네임</span>
-                <input
-                  className="Join_Input"
-                  ref={nicknameRef}
-                  placeholder="닉네임을 입력해 주세요"
-                />
+                <input className="Join_Input" ref={nicknameRef} placeholder="닉네임을 입력해 주세요"/>
               </div>
               <br />
               <div className="PW_JoinWrap">
                 <span className="Join_Label">PW</span>
-                <input
-                  className="Join_Input"
-                  ref={passwordRef}
-                  type="password"
-                  placeholder="비밀번호를 입력해 주세요"
-                />
+                <input className="Join_Input" ref={passwordRef} type="password" placeholder="비밀번호를 입력해 주세요"/>
               </div>
+              <div className="Guide_PW">
+              <span >Tip) 비밀번호는 8자리 이상 입력해 주세요</span>
+            </div>
               <div className="PW_JoinWrap">
                 <span className="Join_Label">PW 재입력</span>
-                <input
-                  className="Join_Input"
-                  ref={confirmPasswordRef}
-                  type="password"
-                  placeholder="비밀번호를 다시 입력해 주세요"
-                />
+                <input className="Join_Input" ref={confirmPasswordRef} type="password" placeholder="비밀번호를 다시 입력해 주세요" />
               </div>
             </div>
           </div>
           <div className="Join_Bottom">
-            <button
-              className="JoinButton"
-              id="SigninBtn"
-              onClick={signupFunction}
-            >
+            <button className="JoinButton" id="SigninBtn" onClick={signupFunction}>
               회원가입
             </button>
           </div>
