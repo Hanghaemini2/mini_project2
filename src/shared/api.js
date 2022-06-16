@@ -49,6 +49,13 @@ export const apis = {
     }),
   likeit: (id) => api.post(`/api/bookreviews/${id}/like`),
   bookDetail: (id) => api.get(`/api/bookreviews/${id}`),
+  editBook: (id, title, content, rate, url) =>
+    api.patch(`/api/bookreviews/${id}`, {
+      bookBuyUrl: url,
+      rank: rate,
+      title: title,
+      content: content,
+    }),
 
   // user
   login: (id, pw) =>

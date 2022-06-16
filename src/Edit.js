@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postBookAxios } from "./redux/modules/book";
+import { editBookAxios } from "./redux/modules/book";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 function Edit() {
@@ -15,12 +15,17 @@ function Edit() {
   const [rate, setRate] = React.useState(postInfo.rank);
 
   const editPost = async () => {
+    if (text_Title.current.value === "" || text_Body.current.value === "") {
+      alert("빈칸을 채워주세요!");
+      return false;
+    }
     await dispatch(
-      postBookAxios(
+      editBookAxios(
+        postInfo.id,
         text_Title.current.value,
         text_Body.current.value,
         rate,
-        text_URL.current.value
+        postInfo.bookBuyUrl
       )
     ).then(() => {
       navigate(`/`);
@@ -62,8 +67,16 @@ function Edit() {
             })}
           </div>
           <div>
-            <div className="Edit_Title">{postInfo.title}</div>
-            <div className="Info_Text">{postInfo.content}</div>
+            <input
+              className="Edit_Title"
+              defaultValue={postInfo.title}
+              ref={text_Title}
+            />
+            <textarea
+              className="Info_Text"
+              defaultValue={postInfo.content}
+              ref={text_Body}
+            />
           </div>
           <div className="EditWrap">
             <button

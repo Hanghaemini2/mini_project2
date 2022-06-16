@@ -97,6 +97,17 @@ export const deleteAxios = (id) => {
   };
 };
 
+export const editBookAxios = (id, title, content, rate, url) => {
+  return async function (dispatch) {
+    await apis
+      .editBook(id, title, content, rate, url)
+      .then((res) => {})
+      .catch((err) => {
+        alert("해당 게시물을 작성한 유저만 수정할 수 있습니다!");
+      });
+  };
+};
+
 // Reducer
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
